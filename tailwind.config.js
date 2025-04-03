@@ -9,7 +9,7 @@ export default {
       colors: {
         'soft-beige': '#F5F5F0',
         'accent': '#4A5568',
-        'text-primary': '#2D3748',
+        'text-primary': '#1A202C',
         'text-secondary': '#4A5568',
       },
       fontFamily: {
@@ -23,16 +23,7 @@ export default {
       typography: {
         DEFAULT: {
           css: {
-            maxWidth: 'none',
             color: '#4A5568',
-            a: {
-              color: '#2D3748',
-              textDecoration: 'none',
-              '&:hover': {
-                color: '#4A5568',
-                textDecoration: 'underline',
-              },
-            },
             h1: {
               color: '#1A202C',
             },
@@ -41,6 +32,12 @@ export default {
             },
             h3: {
               color: '#1A202C',
+            },
+            a: {
+              color: '#4A5568',
+              '&:hover': {
+                color: '#2D3748',
+              },
             },
           },
         },

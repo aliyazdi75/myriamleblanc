@@ -6,25 +6,25 @@
   :root {
     --color-soft-beige: #F5F5F0;
     --color-accent: #4A5568;
-    --color-text-primary: #2D3748;
+    --color-text-primary: #1A202C;
     --color-text-secondary: #4A5568;
   }
   
   body {
-    @apply bg-[#F5F5F0] text-gray-900 antialiased;
+    @apply bg-[#F5F5F0] text-text-primary antialiased;
   }
 }
 
 @layer components {
   .container {
-    @apply max-w-5xl mx-auto px-4 sm:px-6 lg:px-8;
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
   }
   
   .nav-link {
-    @apply text-gray-600 hover:text-gray-900 transition-colors duration-200;
+    @apply text-text-secondary hover:text-text-primary transition-colors duration-200;
   }
   
   .section-title {
-    @apply text-2xl font-medium text-gray-900 mb-6;
+    @apply text-3xl md:text-4xl font-medium text-text-primary mb-8;
   }
 }
