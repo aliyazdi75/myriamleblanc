@@ -3,8 +3,15 @@
 @tailwind utilities;
 
 @layer base {
+  :root {
+    --color-soft-beige: #F5F5F0;
+    --color-accent: #4A5568;
+    --color-text-primary: #2D3748;
+    --color-text-secondary: #4A5568;
+  }
+  
   body {
-    @apply bg-soft-beige text-gray-800 antialiased;
+    @apply bg-[#F5F5F0] text-gray-900 antialiased;
   }
 }
 
