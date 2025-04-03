@@ -3,28 +3,54 @@
 @tailwind utilities;
 
 @layer base {
-  :root {
-    --color-soft-beige: #F5F5F0;
-    --color-accent: #4A5568;
-    --color-text-primary: #1A202C;
-    --color-text-secondary: #4A5568;
+  html {
+    @apply scroll-smooth bg-white;
   }
   
   body {
-    @apply bg-[#F5F5F0] text-text-primary antialiased;
+    @apply text-[#1A202C] antialiased;
   }
 }
 
 @layer components {
   .container {
-    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+    @apply max-w-screen-md mx-auto px-4;
+  }
+  
+  .section {
+    @apply py-24;
   }
   
   .nav-link {
-    @apply text-text-secondary hover:text-text-primary transition-colors duration-200;
+    @apply text-[#4A5568] hover:text-[#1A202C] transition-colors duration-200;
   }
   
-  .section-title {
-    @apply text-3xl md:text-4xl font-medium text-text-primary mb-8;
+  .heading-1 {
+    @apply text-5xl font-medium;
   }
+  
+  .heading-2 {
+    @apply text-3xl font-medium;
+  }
+  
+  .body-text {
+    @apply text-lg font-light;
+  }
+}
+
+@keyframes gradient-x {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-gradient-x {
+  animation: gradient-x 15s ease infinite;
+  background-size: 200% 200%;
 }
