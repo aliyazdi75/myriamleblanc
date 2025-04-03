@@ -6,7 +6,7 @@ const TagEmAllPage = () => {
   return (
     <div className="min-h-screen bg-white">
       {/* Navigation Bar */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-sm border-b border-gray-100">
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-gradient-to-r from-purple-50 via-pink-50 to-blue-50/80 backdrop-blur-sm border-b border-gray-100">
         <div className="max-w-screen-lg mx-auto px-6">
           <div className="flex justify-between items-center h-16">
             <Link 
@@ -71,14 +71,16 @@ const TagEmAllPage = () => {
               <span>•</span>
               <span>UX/UI Design Lead</span>
             </div>
-            <a 
+            <motion.a 
               href="https://fcozzuto.itch.io/tag-em-all" 
               target="_blank" 
               rel="noopener noreferrer"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
               className="inline-block mt-8 px-6 py-3 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-full hover:from-purple-600 hover:to-pink-600 transition-all duration-300 shadow-lg hover:shadow-xl"
             >
               Play the Game 🎮
-            </a>
+            </motion.a>
           </motion.div>
         </div>
       </section>
@@ -93,7 +95,7 @@ const TagEmAllPage = () => {
             className="space-y-8"
           >
             <h2 className="text-3xl font-light tracking-tight text-gray-800 text-center">
-              The Process 🎯
+              The Process
             </h2>
             <div className="relative">
               {/* Process Steps */}
@@ -153,8 +155,8 @@ const TagEmAllPage = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="space-y-6"
           >
-            <h2 className="text-3xl font-light tracking-tight text-gray-800">
-              Hey there! 👋
+            <h2 className="text-3xl font-light tracking-tight text-gray-800 bg-pink-50 px-6 py-3 rounded-full inline-block">
+              Overview
             </h2>
             <p className="text-lg text-gray-600 leading-relaxed">
               Tag 'Em All is a competitive 2-player game where players tag followers to build the biggest crowd. Created during Game Jam Sherbrooke 2025, my biggest challenge was making it instantly playable without a tutorial. Think of it as a playful race to build your own cheering section!
@@ -169,8 +171,8 @@ const TagEmAllPage = () => {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="space-y-6"
           >
-            <h2 className="text-3xl font-light tracking-tight text-gray-800">
-              What I Did 🎨
+            <h2 className="text-3xl font-light tracking-tight text-gray-800 bg-purple-50 px-6 py-3 rounded-full inline-block">
+              My Role
             </h2>
             <ul className="space-y-3 text-gray-600">
               <li className="flex items-start">
@@ -196,8 +198,8 @@ const TagEmAllPage = () => {
             transition={{ duration: 0.6, delay: 0.4 }}
             className="space-y-6"
           >
-            <h2 className="text-3xl font-light tracking-tight text-gray-800">
-              The UX Challenge 🎯
+            <h2 className="text-3xl font-light tracking-tight text-gray-800 bg-blue-50 px-6 py-3 rounded-full inline-block">
+              The Challenge
             </h2>
             <p className="text-lg text-gray-600 leading-relaxed">
               In a game jam, every second counts. Players needed to understand the game instantly, without reading a single word. I focused on designing a start menu and feedback flow that spoke through visuals alone, making the experience intuitive and engaging from the first glance.
@@ -212,14 +214,16 @@ const TagEmAllPage = () => {
             transition={{ duration: 0.6, delay: 0.5 }}
             className="space-y-8"
           >
-            <h2 className="text-3xl font-light tracking-tight text-gray-800">
-              The Design Process ✏️
+            <h2 className="text-3xl font-light tracking-tight text-gray-800 bg-green-50 px-6 py-3 rounded-full inline-block">
+              Design Process
             </h2>
             <div className="space-y-4">
-              <img 
+              <motion.img 
                 src="/images/initialsketches.png" 
-                alt="Initial UI Sketches" 
-                className="w-full rounded-xl shadow-md"
+                alt="Initial UI sketches showing menu layouts, visual hierarchy, and inspiration from Fall Guys, Animal Crossing, and Nintendo DS interfaces" 
+                className="w-full rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300"
+                whileHover={{ scale: 1.02 }}
+                transition={{ duration: 0.2 }}
               />
               <p className="text-sm text-gray-500 italic">Early sketches exploring menu layouts, visual hierarchy, and inspiration from Fall Guys, Animal Crossing, and Nintendo DS interfaces</p>
             </div>
@@ -249,28 +253,34 @@ const TagEmAllPage = () => {
             transition={{ duration: 0.6, delay: 0.6 }}
             className="space-y-8"
           >
-            <h2 className="text-3xl font-light tracking-tight text-gray-800">
-              The Final Look ✨
+            <h2 className="text-3xl font-light tracking-tight text-gray-800 bg-pink-50 px-6 py-3 rounded-full inline-block">
+              Final Design
             </h2>
             <div className="space-y-6">
-              <img 
+              <motion.img 
                 src="/images/menu.png" 
-                alt="Start Menu" 
-                className="w-full rounded-xl shadow-lg"
+                alt="Colorful start menu with intuitive button placement and playful visual design" 
+                className="w-full rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300"
+                whileHover={{ scale: 1.02 }}
+                transition={{ duration: 0.2 }}
               />
               <p className="text-sm text-gray-500 italic">Colorful start menu with intuitive button placement</p>
               
-              <img 
+              <motion.img 
                 src="/images/game.png" 
-                alt="Game Screen" 
-                className="w-full rounded-xl shadow-lg"
+                alt="Dynamic game screen showing follower line and sparkle effects during gameplay" 
+                className="w-full rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300"
+                whileHover={{ scale: 1.02 }}
+                transition={{ duration: 0.2 }}
               />
               <p className="text-sm text-gray-500 italic">Dynamic game screen with follower line and sparkle effects</p>
 
-              <img 
+              <motion.img 
                 src="/images/endscene.png" 
-                alt="End Scene" 
-                className="w-full rounded-xl shadow-lg"
+                alt="Stylized end scene with playful block art and game results display" 
+                className="w-full rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300"
+                whileHover={{ scale: 1.02 }}
+                transition={{ duration: 0.2 }}
               />
               <p className="text-sm text-gray-500 italic">Stylized end scene with playful block art</p>
             </div>
@@ -283,18 +293,26 @@ const TagEmAllPage = () => {
             transition={{ duration: 0.6, delay: 0.7 }}
             className="space-y-6"
           >
-            <h2 className="text-3xl font-light tracking-tight text-gray-800">
-              What Players Said 💭
+            <h2 className="text-3xl font-light tracking-tight text-gray-800 bg-purple-50 px-6 py-3 rounded-full inline-block">
+              Player Feedback
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="bg-purple-50 p-6 rounded-xl">
+              <motion.div 
+                className="bg-purple-50 p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300"
+                whileHover={{ y: -5 }}
+                transition={{ duration: 0.2 }}
+              >
                 <p className="text-gray-700 italic mb-4">"I didn't need a tutorial. The moment I moved, it all made sense!"</p>
                 <p className="text-sm text-gray-500">- Game Jam Player</p>
-              </div>
-              <div className="bg-pink-50 p-6 rounded-xl">
+              </motion.div>
+              <motion.div 
+                className="bg-pink-50 p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300"
+                whileHover={{ y: -5 }}
+                transition={{ duration: 0.2 }}
+              >
                 <p className="text-gray-700 italic mb-4">"Loved the color-coded score and simple controls!"</p>
                 <p className="text-sm text-gray-500">- Game Jam Player</p>
-              </div>
+              </motion.div>
             </div>
           </motion.div>
 
@@ -305,8 +323,8 @@ const TagEmAllPage = () => {
             transition={{ duration: 0.6, delay: 0.8 }}
             className="space-y-6"
           >
-            <h2 className="text-3xl font-light tracking-tight text-gray-800">
-              What I'd Improve 🚀
+            <h2 className="text-3xl font-light tracking-tight text-gray-800 bg-blue-50 px-6 py-3 rounded-full inline-block">
+              Future Improvements
             </h2>
             <ul className="space-y-3 text-gray-600">
               <li className="flex items-start">
@@ -331,8 +349,8 @@ const TagEmAllPage = () => {
             transition={{ duration: 0.6, delay: 0.9 }}
             className="space-y-6"
           >
-            <h2 className="text-3xl font-light tracking-tight text-gray-800">
-              Key Learnings 💡
+            <h2 className="text-3xl font-light tracking-tight text-gray-800 bg-green-50 px-6 py-3 rounded-full inline-block">
+              Key Learnings
             </h2>
             <p className="text-lg text-gray-600 leading-relaxed">
               This game jam taught me that sketching fast brings clarity under pressure. Players connect with visual storytelling much faster than text, and a joyful UI can guide gameplay without a single word. Sometimes, the best UX is the one that makes players smile and play without thinking twice.
