@@ -128,10 +128,10 @@ function App() {
                 className="min-h-screen"
               >
                 {/* Navigation */}
-                <nav className="fixed top-0 left-0 right-0 z-40 bg-gradient-to-r from-purple-50 via-pink-50 to-blue-50/80 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900/80 backdrop-blur-lg border-b border-gray-200/50 dark:border-gray-700/50">
+                <nav className="fixed top-0 left-0 right-0 z-40 bg-gradient-to-r from-soft-beige/90 via-soft-beige/80 to-soft-beige/90 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900/80 backdrop-blur-lg border-b border-gray-200/50 dark:border-gray-700/50">
                   <div className="relative">
                     {/* Animated gradient background */}
-                    <div className="absolute inset-0 bg-gradient-to-r from-purple-100/80 via-pink-100/80 to-blue-100/80 backdrop-blur-md animate-gradient-x"></div>
+                    <div className="absolute inset-0 bg-gradient-to-r from-soft-beige/80 via-soft-beige/70 to-soft-beige/80 backdrop-blur-md animate-gradient-x"></div>
                     {/* Navigation content */}
                     <div className="max-w-screen-md mx-auto px-4">
                       <div className="flex justify-between items-center py-4">
@@ -214,7 +214,7 @@ function App() {
                     initial={{ opacity: 0, scale: 0.95 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.5 }}
-                    className="absolute inset-0 bg-gradient-to-r from-pink-100/90 via-purple-100/90 to-blue-100/90 dark:from-gray-800/90 dark:via-gray-700/90 dark:to-gray-800/90 backdrop-blur-lg animate-gradient-x rounded-3xl max-w-2xl mx-auto"
+                    className="absolute inset-0 bg-gradient-to-r from-soft-beige/90 via-soft-beige/80 to-soft-beige/90 dark:from-gray-800/90 dark:via-gray-700/90 dark:to-gray-800/90 backdrop-blur-lg animate-gradient-x rounded-3xl max-w-2xl mx-auto"
                   />
                   <motion.div 
                     initial={{ opacity: 0, y: 20 }}
@@ -240,8 +240,8 @@ function App() {
                         onClick={() => setVisitorType('recruiter')}
                         className={`relative group px-6 py-2 rounded-full transition-all duration-300 ${
                           visitorType === 'recruiter' 
-                            ? 'text-purple-600 bg-white/90 shadow-lg' 
-                            : 'text-gray-500 hover:text-purple-600 hover:bg-white/70'
+                            ? 'text-purple-600 bg-soft-beige/90 shadow-lg' 
+                            : 'text-gray-500 hover:text-purple-600 hover:bg-soft-beige/70'
                         }`}
                       >
                         <span className="relative z-10 text-base">{t.buttons.recruiter}</span>
@@ -260,8 +260,8 @@ function App() {
                         onClick={() => setVisitorType('designer')}
                         className={`relative group px-6 py-2 rounded-full transition-all duration-300 ${
                           visitorType === 'designer' 
-                            ? 'text-blue-600 bg-white/90 shadow-lg' 
-                            : 'text-gray-500 hover:text-blue-600 hover:bg-white/70'
+                            ? 'text-blue-600 bg-soft-beige/90 shadow-lg' 
+                            : 'text-gray-500 hover:text-blue-600 hover:bg-soft-beige/70'
                         }`}
                       >
                         <span className="relative z-10 text-base">{t.buttons.designer}</span>
@@ -280,8 +280,8 @@ function App() {
                         onClick={() => setVisitorType('explorer')}
                         className={`relative group px-6 py-2 rounded-full transition-all duration-300 ${
                           visitorType === 'explorer' 
-                            ? 'text-pink-600 bg-white/90 shadow-lg' 
-                            : 'text-gray-500 hover:text-pink-600 hover:bg-white/70'
+                            ? 'text-pink-600 bg-soft-beige/90 shadow-lg' 
+                            : 'text-gray-500 hover:text-pink-600 hover:bg-soft-beige/70'
                         }`}
                       >
                         <span className="relative z-10 text-base">{t.buttons.explorer}</span>
@@ -313,7 +313,7 @@ function App() {
                   <div className="max-w-screen-md mx-auto px-4">
                     <h2 className="text-3xl font-medium mb-8 text-text-primary dark:text-gray-100">{t.projects.title}</h2>
                     <div className="space-y-8">
-                      <div className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-green-50 via-teal-50 to-blue-50 dark:from-gray-800 dark:via-gray-700 dark:to-gray-800 p-8 shadow-lg transition-all duration-300 hover:shadow-xl">
+                      <div className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-soft-beige via-soft-beige/90 to-soft-beige/80 dark:from-gray-800 dark:via-gray-700 dark:to-gray-800 p-8 shadow-lg transition-all duration-300 hover:shadow-xl">
                         <div className="absolute inset-0 bg-gradient-to-br from-green-100/20 via-teal-100/20 to-blue-100/20 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
                         <div className="relative z-10">
                           <Link to="/tag-em-all" className="block">
@@ -335,7 +335,7 @@ function App() {
                           </motion.div>
                         </div>
                       </div>
-                      <div className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-purple-50 via-pink-50 to-blue-50 dark:from-gray-800 dark:via-gray-700 dark:to-gray-800 p-8 shadow-lg transition-all duration-300 hover:shadow-xl">
+                      <div className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-soft-beige via-soft-beige/90 to-soft-beige/80 dark:from-gray-800 dark:via-gray-700 dark:to-gray-800 p-8 shadow-lg transition-all duration-300 hover:shadow-xl">
                         <div className="absolute inset-0 bg-gradient-to-br from-purple-100/20 via-pink-100/20 to-blue-100/20 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
                         <div className="relative z-10">
                           <h3 className="text-xl font-light text-[#1A202C] mb-2">{t.projects.igniteHerMind}</h3>
@@ -358,7 +358,7 @@ function App() {
                           </div>
                         </div>
                       </div>
-                      <div className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-blue-50 via-green-50 to-teal-50 dark:from-gray-800 dark:via-gray-700 dark:to-gray-800 p-8 shadow-lg transition-all duration-300 hover:shadow-xl">
+                      <div className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-soft-beige via-soft-beige/90 to-soft-beige/80 dark:from-gray-800 dark:via-gray-700 dark:to-gray-800 p-8 shadow-lg transition-all duration-300 hover:shadow-xl">
                         <div className="absolute inset-0 bg-gradient-to-br from-blue-100/20 via-green-100/20 to-teal-100/20 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
                         <div className="relative z-10">
                           <h3 className="text-xl font-light text-[#1A202C] mb-2">{t.projects.uxTriathlon}</h3>
@@ -394,7 +394,7 @@ function App() {
                 </section>
 
                 {/* About Section */}
-                <section id="about" className="py-24 bg-white/50 dark:bg-gray-900/50">
+                <section id="about" className="py-24 bg-soft-beige/50 dark:bg-gray-900/50">
                   <div className="max-w-screen-md mx-auto px-4">
                     <h2 className="text-3xl font-medium mb-8">{t.about.title}</h2>
                     <div className="flex flex-col md:flex-row items-start gap-12">
