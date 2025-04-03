@@ -4,11 +4,11 @@ export default {
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
+  darkMode: 'class',
   theme: {
     extend: {
       colors: {
-        'soft-beige': '#F5F5F0',
-        'accent': '#4A5568',
+        'soft-beige': '#F5F5DC',
         'text-primary': '#1A202C',
         'text-secondary': '#4A5568',
       },
@@ -59,11 +59,11 @@ export default {
         'gradient-x': {
           '0%, 100%': {
             'background-size': '200% 200%',
-            'background-position': 'left center',
+            'background-position': 'left center'
           },
           '50%': {
             'background-size': '200% 200%',
-            'background-position': 'right center',
+            'background-position': 'right center'
           },
         },
       },
