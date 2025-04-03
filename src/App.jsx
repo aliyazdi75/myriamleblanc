@@ -217,9 +217,19 @@ function App() {
                   {/* Visitor Type Section */}
                   <div className="relative mt-10">
                     {/* Animated gradient background */}
-                    <div className="absolute inset-0 bg-gradient-to-r from-pink-100/90 via-purple-100/90 to-blue-100/90 backdrop-blur-lg animate-gradient-x rounded-3xl max-w-2xl mx-auto"></div>
+                    <motion.div 
+                      initial={{ opacity: 0, scale: 0.95 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ duration: 0.5 }}
+                      className="absolute inset-0 bg-gradient-to-r from-pink-100/90 via-purple-100/90 to-blue-100/90 backdrop-blur-lg animate-gradient-x rounded-3xl max-w-2xl mx-auto"
+                    />
                     {/* Content container */}
-                    <div className="relative space-y-8 py-12 px-8 md:px-12 max-w-2xl mx-auto">
+                    <motion.div 
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.5, delay: 0.2 }}
+                      className="relative space-y-8 py-12 px-8 md:px-12 max-w-2xl mx-auto"
+                    >
                       <motion.p 
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
@@ -233,49 +243,61 @@ function App() {
                           initial={{ opacity: 0, y: 20 }}
                           animate={{ opacity: 1, y: 0 }}
                           transition={{ duration: 0.5, delay: 0.1 }}
+                          whileHover={{ scale: 1.05 }}
+                          whileTap={{ scale: 0.95 }}
                           onClick={() => setVisitorType('recruiter')}
                           className={`relative group px-6 py-2 rounded-full transition-all duration-300 ${
                             visitorType === 'recruiter' 
-                              ? 'text-purple-600 bg-white/90' 
+                              ? 'text-purple-600 bg-white/90 shadow-lg' 
                               : 'text-gray-500 hover:text-purple-600 hover:bg-white/70'
                           }`}
                         >
                           <span className="relative z-10 text-base">{t.buttons.recruiter}</span>
-                          <span className={`absolute inset-0 rounded-full bg-gradient-to-r from-purple-100 to-pink-100 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ${
-                            visitorType === 'recruiter' ? 'opacity-100' : ''
-                          }`}></span>
+                          <motion.span 
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: visitorType === 'recruiter' ? 1 : 0 }}
+                            className="absolute inset-0 rounded-full bg-gradient-to-r from-purple-100 to-pink-100 group-hover:opacity-100 transition-opacity duration-300"
+                          />
                         </motion.button>
                         <motion.button
                           initial={{ opacity: 0, y: 20 }}
                           animate={{ opacity: 1, y: 0 }}
                           transition={{ duration: 0.5, delay: 0.2 }}
+                          whileHover={{ scale: 1.05 }}
+                          whileTap={{ scale: 0.95 }}
                           onClick={() => setVisitorType('designer')}
                           className={`relative group px-6 py-2 rounded-full transition-all duration-300 ${
                             visitorType === 'designer' 
-                              ? 'text-blue-600 bg-white/90' 
+                              ? 'text-blue-600 bg-white/90 shadow-lg' 
                               : 'text-gray-500 hover:text-blue-600 hover:bg-white/70'
                           }`}
                         >
                           <span className="relative z-10 text-base">{t.buttons.designer}</span>
-                          <span className={`absolute inset-0 rounded-full bg-gradient-to-r from-blue-100 to-purple-100 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ${
-                            visitorType === 'designer' ? 'opacity-100' : ''
-                          }`}></span>
+                          <motion.span 
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: visitorType === 'designer' ? 1 : 0 }}
+                            className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-100 to-purple-100 group-hover:opacity-100 transition-opacity duration-300"
+                          />
                         </motion.button>
                         <motion.button
                           initial={{ opacity: 0, y: 20 }}
                           animate={{ opacity: 1, y: 0 }}
                           transition={{ duration: 0.5, delay: 0.3 }}
+                          whileHover={{ scale: 1.05 }}
+                          whileTap={{ scale: 0.95 }}
                           onClick={() => setVisitorType('explorer')}
                           className={`relative group px-6 py-2 rounded-full transition-all duration-300 ${
                             visitorType === 'explorer' 
-                              ? 'text-pink-600 bg-white/90' 
+                              ? 'text-pink-600 bg-white/90 shadow-lg' 
                               : 'text-gray-500 hover:text-pink-600 hover:bg-white/70'
                           }`}
                         >
                           <span className="relative z-10 text-base">{t.buttons.explorer}</span>
-                          <span className={`absolute inset-0 rounded-full bg-gradient-to-r from-pink-100 to-blue-100 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ${
-                            visitorType === 'explorer' ? 'opacity-100' : ''
-                          }`}></span>
+                          <motion.span 
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: visitorType === 'explorer' ? 1 : 0 }}
+                            className="absolute inset-0 rounded-full bg-gradient-to-r from-pink-100 to-blue-100 group-hover:opacity-100 transition-opacity duration-300"
+                          />
                         </motion.button>
                       </div>
                       <AnimatePresence mode="wait">
@@ -291,7 +313,7 @@ function App() {
                           </motion.p>
                         )}
                       </AnimatePresence>
-                    </div>
+                    </motion.div>
                   </div>
                 </div>
               </section>
@@ -301,29 +323,73 @@ function App() {
                 <div className="max-w-screen-md mx-auto px-4">
                   <h2 className="text-3xl font-medium mb-8">{t.projects.title}</h2>
                   <div className="space-y-8">
-                    <div className="space-y-2">
-                      <Link to="/tag-em-all" className="block text-xl font-light text-[#1A202C] hover:underline transition-all duration-200">
-                        {t.projects.tagEmAll}
-                      </Link>
-                      <p className="text-sm text-gray-500 max-w-xl">
-                        {t.projects.tagEmAllDesc}
-                      </p>
+                    <div className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-green-50 via-teal-50 to-blue-50 p-8 shadow-lg transition-all duration-300 hover:shadow-xl">
+                      <div className="absolute inset-0 bg-gradient-to-br from-green-100/20 via-teal-100/20 to-blue-100/20 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                      <div className="relative z-10">
+                        <Link to="/tag-em-all" className="block">
+                          <h3 className="text-xl font-light text-[#1A202C] mb-2 hover:text-teal-600 transition-colors duration-300">
+                            {t.projects.tagEmAll}
+                          </h3>
+                        </Link>
+                        <p className="text-sm text-gray-500 max-w-xl mb-4">
+                          {t.projects.tagEmAllDesc}
+                        </p>
+                        <motion.div 
+                          className="text-teal-600"
+                          whileHover={{ x: 5 }}
+                          transition={{ type: "spring", stiffness: 300 }}
+                        >
+                          <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                          </svg>
+                        </motion.div>
+                      </div>
                     </div>
-                    <div className="space-y-2">
-                      <Link to="/ignite-her-mind" className="block text-xl font-light text-[#1A202C] hover:underline transition-all duration-200">
-                        {t.projects.igniteHerMind}
-                      </Link>
-                      <p className="text-sm text-gray-500 max-w-xl">
-                        {t.projects.igniteHerMindDesc}
-                      </p>
+                    <div className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-purple-50 via-pink-50 to-blue-50 p-8 shadow-lg transition-all duration-300 hover:shadow-xl">
+                      <div className="absolute inset-0 bg-gradient-to-br from-purple-100/20 via-pink-100/20 to-blue-100/20 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                      <div className="relative z-10">
+                        <h3 className="text-xl font-light text-[#1A202C] mb-2">{t.projects.igniteHerMind}</h3>
+                        <p className="text-sm text-gray-500 max-w-xl mb-4">
+                          {t.projects.igniteHerMindDesc}
+                        </p>
+                        <div className="flex items-center justify-between">
+                          <span className="inline-flex items-center rounded-full bg-purple-100 px-3 py-1 text-sm font-medium text-purple-800">
+                            Coming Soon
+                          </span>
+                          <motion.div 
+                            className="text-purple-600"
+                            whileHover={{ x: 5 }}
+                            transition={{ type: "spring", stiffness: 300 }}
+                          >
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                            </svg>
+                          </motion.div>
+                        </div>
+                      </div>
                     </div>
-                    <div className="space-y-2">
-                      <Link to="/ux-triathlon" className="block text-xl font-light text-[#1A202C] hover:underline transition-all duration-200">
-                        {t.projects.uxTriathlon}
-                      </Link>
-                      <p className="text-sm text-gray-500 max-w-xl">
-                        {t.projects.uxTriathlonDesc}
-                      </p>
+                    <div className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-blue-50 via-green-50 to-teal-50 p-8 shadow-lg transition-all duration-300 hover:shadow-xl">
+                      <div className="absolute inset-0 bg-gradient-to-br from-blue-100/20 via-green-100/20 to-teal-100/20 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                      <div className="relative z-10">
+                        <h3 className="text-xl font-light text-[#1A202C] mb-2">{t.projects.uxTriathlon}</h3>
+                        <p className="text-sm text-gray-500 max-w-xl mb-4">
+                          {t.projects.uxTriathlonDesc}
+                        </p>
+                        <div className="flex items-center justify-between">
+                          <span className="inline-flex items-center rounded-full bg-blue-100 px-3 py-1 text-sm font-medium text-blue-800">
+                            Coming Soon
+                          </span>
+                          <motion.div 
+                            className="text-blue-600"
+                            whileHover={{ x: 5 }}
+                            transition={{ type: "spring", stiffness: 300 }}
+                          >
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                            </svg>
+                          </motion.div>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
