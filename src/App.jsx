@@ -34,7 +34,8 @@ function App() {
       nav: {
         projects: "Projects",
         about: "About",
-        contact: "Contact"
+        contact: "Contact",
+        resume: "Resume"
       },
       projects: {
         title: "Projects",
@@ -75,7 +76,8 @@ function App() {
       nav: {
         projects: "Projets",
         about: "À propos",
-        contact: "Contact"
+        contact: "Contact",
+        resume: "CV"
       },
       projects: {
         title: "Projets",
@@ -104,7 +106,7 @@ function App() {
   const t = translations[language]
 
   return (
-    <div className="min-h-screen bg-soft-beige dark:bg-gray-950 text-text-primary dark:text-gray-100 transition-colors duration-300">
+    <div className="min-h-screen bg-[#FDFBF7] dark:bg-gray-950 text-text-primary dark:text-gray-100 transition-colors duration-300">
       <ThemeToggle />
       <Router>
         <AnimatePresence mode="wait">
@@ -128,10 +130,10 @@ function App() {
                 className="min-h-screen"
               >
                 {/* Navigation */}
-                <nav className="fixed top-0 left-0 right-0 z-40 bg-gradient-to-r from-soft-beige/90 via-soft-beige/80 to-soft-beige/90 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900/80 backdrop-blur-lg border-b border-gray-200/50 dark:border-gray-700/50">
+                <nav className="fixed top-0 left-0 right-0 z-40 bg-gradient-to-r from-purple-50 via-pink-50 to-blue-50/80 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900/80 backdrop-blur-lg border-b border-gray-200/50 dark:border-gray-700/50">
                   <div className="relative">
                     {/* Animated gradient background */}
-                    <div className="absolute inset-0 bg-gradient-to-r from-soft-beige/80 via-soft-beige/70 to-soft-beige/80 backdrop-blur-md animate-gradient-x"></div>
+                    <div className="absolute inset-0 bg-gradient-to-r from-purple-100/80 via-pink-100/80 to-blue-100/80 backdrop-blur-md animate-gradient-x"></div>
                     {/* Navigation content */}
                     <div className="max-w-screen-md mx-auto px-4">
                       <div className="flex justify-between items-center py-4">
@@ -152,6 +154,15 @@ function App() {
                             >
                               {t.nav.about}
                               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-500 to-purple-500 group-hover:w-full transition-all duration-300"></span>
+                            </a>
+                          </li>
+                          <li>
+                            <a 
+                              href="#resume" 
+                              className="text-lg text-[#1A202C] hover:text-pink-600 transition-colors duration-300 relative group"
+                            >
+                              {t.nav.resume}
+                              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-pink-500 to-blue-500 group-hover:w-full transition-all duration-300"></span>
                             </a>
                           </li>
                           <li>
@@ -214,7 +225,7 @@ function App() {
                     initial={{ opacity: 0, scale: 0.95 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.5 }}
-                    className="absolute inset-0 bg-gradient-to-r from-soft-beige/90 via-soft-beige/80 to-soft-beige/90 dark:from-gray-800/90 dark:via-gray-700/90 dark:to-gray-800/90 backdrop-blur-lg animate-gradient-x rounded-3xl max-w-2xl mx-auto"
+                    className="absolute inset-0 bg-gradient-to-r from-pink-100/90 via-purple-100/90 to-blue-100/90 dark:from-gray-800/90 dark:via-gray-700/90 dark:to-gray-800/90 backdrop-blur-lg animate-gradient-x rounded-3xl max-w-2xl mx-auto"
                   />
                   <motion.div 
                     initial={{ opacity: 0, y: 20 }}
@@ -226,7 +237,7 @@ function App() {
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.5 }}
-                      className="text-xl md:text-2xl text-gray-700 text-center font-light tracking-wide mb-8"
+                      className="text-xl md:text-2xl text-white text-center font-light tracking-wide mb-8"
                     >
                       {t.question}
                     </motion.p>
@@ -240,8 +251,8 @@ function App() {
                         onClick={() => setVisitorType('recruiter')}
                         className={`relative group px-6 py-2 rounded-full transition-all duration-300 ${
                           visitorType === 'recruiter' 
-                            ? 'text-purple-600 bg-soft-beige/90 shadow-lg' 
-                            : 'text-gray-500 hover:text-purple-600 hover:bg-soft-beige/70'
+                            ? 'text-purple-300 bg-white/90 shadow-lg' 
+                            : 'text-white hover:text-purple-300 hover:bg-white/70'
                         }`}
                       >
                         <span className="relative z-10 text-base">{t.buttons.recruiter}</span>
@@ -260,8 +271,8 @@ function App() {
                         onClick={() => setVisitorType('designer')}
                         className={`relative group px-6 py-2 rounded-full transition-all duration-300 ${
                           visitorType === 'designer' 
-                            ? 'text-blue-600 bg-soft-beige/90 shadow-lg' 
-                            : 'text-gray-500 hover:text-blue-600 hover:bg-soft-beige/70'
+                            ? 'text-blue-300 bg-white/90 shadow-lg' 
+                            : 'text-white hover:text-blue-300 hover:bg-white/70'
                         }`}
                       >
                         <span className="relative z-10 text-base">{t.buttons.designer}</span>
@@ -280,8 +291,8 @@ function App() {
                         onClick={() => setVisitorType('explorer')}
                         className={`relative group px-6 py-2 rounded-full transition-all duration-300 ${
                           visitorType === 'explorer' 
-                            ? 'text-pink-600 bg-soft-beige/90 shadow-lg' 
-                            : 'text-gray-500 hover:text-pink-600 hover:bg-soft-beige/70'
+                            ? 'text-pink-300 bg-white/90 shadow-lg' 
+                            : 'text-white hover:text-pink-300 hover:bg-white/70'
                         }`}
                       >
                         <span className="relative z-10 text-base">{t.buttons.explorer}</span>
@@ -299,7 +310,7 @@ function App() {
                           animate={{ opacity: 1, y: 0 }}
                           exit={{ opacity: 0, y: 10 }}
                           transition={{ duration: 0.3 }}
-                          className="text-base text-gray-500 italic text-center mt-4"
+                          className="text-base text-white italic text-center mt-4"
                         >
                           {t.responses[visitorType]}
                         </motion.p>
@@ -311,21 +322,21 @@ function App() {
                 {/* Projects Section */}
                 <section id="projects" className="py-24">
                   <div className="max-w-screen-md mx-auto px-4">
-                    <h2 className="text-3xl font-medium mb-8 text-text-primary dark:text-gray-100">{t.projects.title}</h2>
+                    <h2 className="text-3xl font-medium mb-8 text-white dark:text-gray-100">{t.projects.title}</h2>
                     <div className="space-y-8">
-                      <div className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-soft-beige via-soft-beige/90 to-soft-beige/80 dark:from-gray-800 dark:via-gray-700 dark:to-gray-800 p-8 shadow-lg transition-all duration-300 hover:shadow-xl">
+                      <div className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-green-50 via-teal-50 to-blue-50 dark:from-gray-800 dark:via-gray-700 dark:to-gray-800 p-8 shadow-lg transition-all duration-300 hover:shadow-xl">
                         <div className="absolute inset-0 bg-gradient-to-br from-green-100/20 via-teal-100/20 to-blue-100/20 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
                         <div className="relative z-10">
                           <Link to="/tag-em-all" className="block">
-                            <h3 className="text-xl font-light text-[#1A202C] mb-2 hover:text-teal-600 transition-colors duration-300">
+                            <h3 className="text-xl font-light text-white mb-2 hover:text-teal-300 transition-colors duration-300">
                               {t.projects.tagEmAll}
                             </h3>
                           </Link>
-                          <p className="text-sm text-gray-500 max-w-xl mb-4">
+                          <p className="text-sm text-gray-200 dark:text-gray-300 max-w-xl mb-4">
                             {t.projects.tagEmAllDesc}
                           </p>
                           <motion.div 
-                            className="text-teal-600"
+                            className="text-teal-300"
                             whileHover={{ x: 5 }}
                             transition={{ type: "spring", stiffness: 300 }}
                           >
@@ -335,19 +346,19 @@ function App() {
                           </motion.div>
                         </div>
                       </div>
-                      <div className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-soft-beige via-soft-beige/90 to-soft-beige/80 dark:from-gray-800 dark:via-gray-700 dark:to-gray-800 p-8 shadow-lg transition-all duration-300 hover:shadow-xl">
+                      <div className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-purple-50 via-pink-50 to-blue-50 dark:from-gray-800 dark:via-gray-700 dark:to-gray-800 p-8 shadow-lg transition-all duration-300 hover:shadow-xl">
                         <div className="absolute inset-0 bg-gradient-to-br from-purple-100/20 via-pink-100/20 to-blue-100/20 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
                         <div className="relative z-10">
-                          <h3 className="text-xl font-light text-[#1A202C] mb-2">{t.projects.igniteHerMind}</h3>
-                          <p className="text-sm text-gray-500 max-w-xl mb-4">
+                          <h3 className="text-xl font-light text-white mb-2">{t.projects.igniteHerMind}</h3>
+                          <p className="text-sm text-gray-200 dark:text-gray-300 max-w-xl mb-4">
                             {t.projects.igniteHerMindDesc}
                           </p>
                           <div className="flex items-center justify-between">
-                            <span className="inline-flex items-center rounded-full bg-purple-100 px-3 py-1 text-sm font-medium text-purple-800">
+                            <span className="inline-flex items-center rounded-full bg-purple-100 dark:bg-purple-900 px-3 py-1 text-sm font-medium text-purple-800 dark:text-purple-200">
                               Coming Soon
                             </span>
                             <motion.div 
-                              className="text-purple-600"
+                              className="text-purple-300 dark:text-purple-400"
                               whileHover={{ x: 5 }}
                               transition={{ type: "spring", stiffness: 300 }}
                             >
@@ -358,19 +369,19 @@ function App() {
                           </div>
                         </div>
                       </div>
-                      <div className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-soft-beige via-soft-beige/90 to-soft-beige/80 dark:from-gray-800 dark:via-gray-700 dark:to-gray-800 p-8 shadow-lg transition-all duration-300 hover:shadow-xl">
+                      <div className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-blue-50 via-green-50 to-teal-50 dark:from-gray-800 dark:via-gray-700 dark:to-gray-800 p-8 shadow-lg transition-all duration-300 hover:shadow-xl">
                         <div className="absolute inset-0 bg-gradient-to-br from-blue-100/20 via-green-100/20 to-teal-100/20 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
                         <div className="relative z-10">
-                          <h3 className="text-xl font-light text-[#1A202C] mb-2">{t.projects.uxTriathlon}</h3>
-                          <p className="text-sm text-gray-500 max-w-xl mb-4">
+                          <h3 className="text-xl font-light text-white mb-2">{t.projects.uxTriathlon}</h3>
+                          <p className="text-sm text-gray-200 dark:text-gray-300 max-w-xl mb-4">
                             {t.projects.uxTriathlonDesc}
                           </p>
                           <div className="flex items-center justify-between">
-                            <span className="inline-flex items-center rounded-full bg-blue-100 px-3 py-1 text-sm font-medium text-blue-800">
+                            <span className="inline-flex items-center rounded-full bg-blue-100 dark:bg-blue-900 px-3 py-1 text-sm font-medium text-blue-800 dark:text-blue-200">
                               Coming Soon
                             </span>
                             <motion.div 
-                              className="text-blue-600"
+                              className="text-blue-300 dark:text-blue-400"
                               whileHover={{ x: 5 }}
                               transition={{ type: "spring", stiffness: 300 }}
                             >
@@ -386,7 +397,7 @@ function App() {
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.5, delay: 0.4 }}
-                      className="text-center text-gray-500 italic text-sm mt-8"
+                      className="text-center text-gray-200 dark:text-gray-300 italic text-sm mt-8"
                     >
                       {t.projects.cta}
                     </motion.p>
@@ -394,9 +405,9 @@ function App() {
                 </section>
 
                 {/* About Section */}
-                <section id="about" className="py-24 bg-soft-beige/50 dark:bg-gray-900/50">
+                <section id="about" className="py-24 bg-white/50 dark:bg-gray-900/50">
                   <div className="max-w-screen-md mx-auto px-4">
-                    <h2 className="text-3xl font-medium mb-8">{t.about.title}</h2>
+                    <h2 className="text-3xl font-medium mb-8 text-white dark:text-gray-100">{t.about.title}</h2>
                     <div className="flex flex-col md:flex-row items-start gap-12">
                       <div className="w-full md:w-1/2">
                         <div className="relative group">
@@ -413,12 +424,89 @@ function App() {
                         </div>
                       </div>
                       <div className="w-full md:w-1/2 space-y-6">
-                        <p className="body-text">
+                        <p className="text-gray-200 dark:text-gray-300">
                           {t.about.intro}
                         </p>
-                        <p className="body-text">
+                        <p className="text-gray-200 dark:text-gray-300">
                           {t.about.mission}
                         </p>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+
+                {/* Resume Section */}
+                <section id="resume" className="py-24">
+                  <div className="max-w-screen-md mx-auto px-4">
+                    <h2 className="text-3xl font-medium mb-8 text-white dark:text-gray-100">{t.nav.resume}</h2>
+                    <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8">
+                      <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8">
+                        <div>
+                          <h3 className="text-2xl font-medium text-[#1A202C] dark:text-white">Myriam Leblanc</h3>
+                          <p className="text-gray-600 dark:text-gray-300">UX Designer & Developer</p>
+                        </div>
+                        <div className="mt-4 md:mt-0">
+                          <a 
+                            href="mailto:myriamleblanc230@gmail.com" 
+                            className="text-purple-600 hover:text-purple-700 dark:text-purple-400 dark:hover:text-purple-300"
+                          >
+                            myriamleblanc230@gmail.com
+                          </a>
+                        </div>
+                      </div>
+                      
+                      <div className="space-y-8">
+                        <div>
+                          <h4 className="text-xl font-medium text-[#1A202C] dark:text-white mb-4">Education</h4>
+                          <div className="space-y-4">
+                            <div>
+                              <h5 className="font-medium text-[#1A202C] dark:text-white">Computer Science</h5>
+                              <p className="text-gray-600 dark:text-gray-300">First-generation CS student</p>
+                            </div>
+                          </div>
+                        </div>
+                        
+                        <div>
+                          <h4 className="text-xl font-medium text-[#1A202C] dark:text-white mb-4">Skills</h4>
+                          <div className="flex flex-wrap gap-2">
+                            <span className="px-3 py-1 bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 rounded-full text-sm">UX Design</span>
+                            <span className="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm">React</span>
+                            <span className="px-3 py-1 bg-pink-100 dark:bg-pink-900 text-pink-800 dark:text-pink-200 rounded-full text-sm">JavaScript</span>
+                            <span className="px-3 py-1 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 rounded-full text-sm">HTML/CSS</span>
+                            <span className="px-3 py-1 bg-teal-100 dark:bg-teal-900 text-teal-800 dark:text-teal-200 rounded-full text-sm">Tailwind CSS</span>
+                          </div>
+                        </div>
+                        
+                        <div>
+                          <h4 className="text-xl font-medium text-[#1A202C] dark:text-white mb-4">Projects</h4>
+                          <div className="space-y-4">
+                            <div>
+                              <h5 className="font-medium text-[#1A202C] dark:text-white">Tag 'Em All</h5>
+                              <p className="text-gray-600 dark:text-gray-300">Visual onboarding in 48h - A playful comic strip that guides users through the power of tagging</p>
+                            </div>
+                            <div>
+                              <h5 className="font-medium text-[#1A202C] dark:text-white">ignite.HER.MIND</h5>
+                              <p className="text-gray-600 dark:text-gray-300">Empowering women through digital curation - Coming Soon</p>
+                            </div>
+                            <div>
+                              <h5 className="font-medium text-[#1A202C] dark:text-white">UX + Triathlon</h5>
+                              <p className="text-gray-600 dark:text-gray-300">Tracking calm & chaos in motion - Coming Soon</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      
+                      <div className="mt-8 pt-8 border-t border-gray-200 dark:border-gray-700">
+                        <a 
+                          href="/resume.pdf" 
+                          download
+                          className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-full hover:from-purple-600 hover:to-pink-600 transition-all duration-300 shadow-md hover:shadow-lg"
+                        >
+                          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                          </svg>
+                          Download Resume
+                        </a>
                       </div>
                     </div>
                   </div>
@@ -427,14 +515,14 @@ function App() {
                 {/* Contact Section */}
                 <section id="contact" className="py-24">
                   <div className="max-w-screen-md mx-auto px-4">
-                    <h2 className="text-3xl font-medium mb-8">{t.contact.title}</h2>
+                    <h2 className="text-3xl font-medium mb-8 text-white dark:text-gray-100">{t.contact.title}</h2>
                     <div className="space-y-6">
-                      <p className="body-text">
+                      <p className="text-gray-200 dark:text-gray-300">
                         {t.contact.message}
                       </p>
                       <a 
                         href="mailto:myriamleblanc230@gmail.com" 
-                        className="inline-flex items-center px-8 py-4 text-lg font-light text-[#1A202C] bg-transparent border-2 border-[#1A202C] rounded-full hover:bg-[#1A202C] hover:text-white transition-all duration-300 group"
+                        className="inline-flex items-center px-8 py-4 text-lg font-light text-white bg-transparent border-2 border-white rounded-full hover:bg-white hover:text-[#1A202C] transition-all duration-300 group"
                       >
                         {t.contact.button}
                         <svg 
@@ -457,9 +545,9 @@ function App() {
                 </section>
 
                 {/* Footer */}
-                <footer className="py-8 text-center text-sm text-text-secondary dark:text-gray-400">
+                <footer className="py-8 text-center text-sm text-gray-200 dark:text-gray-300">
                   <div className="container text-center">
-                    <p className="text-sm text-gray-400">
+                    <p className="text-sm text-gray-200 dark:text-gray-300">
                       {t.footer}
                     </p>
                   </div>
