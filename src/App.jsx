@@ -87,14 +87,26 @@ function App() {
 
       {/* About Section */}
       <section id="about" className="py-32">
-        <div className="container max-w-3xl mx-auto text-center">
-          <h2 className="section-title text-3xl md:text-4xl mb-12">About Me</h2>
-          <div className="prose max-w-none">
-            <p className="text-lg text-gray-600 leading-relaxed">
-              Born in the beautiful Îles-de-la-Madeleine, I'm a first-generation computer science student
-              with a passion for creating meaningful digital experiences. My journey in UX design
-              reflects my belief in the power of thoughtful, human-centered technology.
-            </p>
+        <div className="container max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl md:text-4xl font-medium text-gray-900 mb-12">About Me</h2>
+          <div className="flex flex-col md:flex-row gap-12 items-start">
+            <div className="w-full md:w-1/2 relative group">
+              <img 
+                src="/images/profile-bw.jpg" 
+                alt="Myriam Leblanc - Black and White Portrait" 
+                className="w-full h-auto transition-opacity duration-500 group-hover:opacity-0"
+              />
+              <img 
+                src="/images/profile-color.jpg" 
+                alt="Myriam Leblanc - Color Portrait" 
+                className="absolute inset-0 w-full h-auto opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+              />
+            </div>
+            <div className="w-full md:w-1/2">
+              <p className="text-lg text-gray-600 leading-relaxed">
+                I'm Myriam, a first-gen CS student from the Magdalen Islands. I blend curiosity, aesthetics, and empathy to design experiences that feel intuitive and human. From airport shifts to game jams and EDM festivals, I've always believed in showing up fully — and helping others do the same through technology.
+              </p>
+            </div>
           </div>
         </div>
       </section>
