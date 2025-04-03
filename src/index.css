@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-soft-beige text-gray-800 antialiased;
+  }
+}
+
+@layer components {
+  .container {
+    @apply max-w-5xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+  
+  .nav-link {
+    @apply text-gray-600 hover:text-gray-900 transition-colors duration-200;
+  }
+  
+  .section-title {
+    @apply text-2xl font-medium text-gray-900 mb-6;
+  }
+}
