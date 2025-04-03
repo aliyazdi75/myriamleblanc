@@ -35,7 +35,8 @@ function App() {
         igniteHerMind: "→ ignite.HER.MIND · Empowering women through digital curation",
         igniteHerMindDesc: "A digital platform designed to amplify women's voices and stories through thoughtful content curation and community building.",
         uxTriathlon: "→ UX + Triathlon · Tracking calm & chaos in motion",
-        uxTriathlonDesc: "An app that helps athletes balance training intensity with recovery, using data visualization to make complex training patterns clear and actionable."
+        uxTriathlonDesc: "An app that helps athletes balance training intensity with recovery, using data visualization to make complex training patterns clear and actionable.",
+        cta: "Excited to create meaningful experiences together"
       },
       about: {
         title: "About",
@@ -75,7 +76,8 @@ function App() {
         igniteHerMind: "→ ignite.HER.MIND · Autonomisation des femmes par la curation numérique",
         igniteHerMindDesc: "Une plateforme numérique conçue pour amplifier les voix et les histoires des femmes à travers une curation de contenu réfléchie et la construction de communauté.",
         uxTriathlon: "→ UX + Triathlon · Suivi du calme & du chaos en mouvement",
-        uxTriathlonDesc: "Une application qui aide les athlètes à équilibrer l'intensité de l'entraînement avec la récupération, utilisant la visualisation de données pour rendre les schémas d'entraînement complexes clairs et actionnables."
+        uxTriathlonDesc: "Une application qui aide les athlètes à équilibrer l'intensité de l'entraînement avec la récupération, utilisant la visualisation de données pour rendre les schémas d'entraînement complexes clairs et actionnables.",
+        cta: "Enthousiaste à l'idée de créer ensemble des expériences significatives"
       },
       about: {
         title: "À propos",
@@ -392,6 +394,14 @@ function App() {
                       </div>
                     </div>
                   </div>
+                  <motion.p 
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 0.4 }}
+                    className="text-center text-gray-500 italic text-sm mt-8"
+                  >
+                    {t.projects.cta}
+                  </motion.p>
                 </div>
               </section>
 
