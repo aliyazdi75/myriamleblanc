@@ -1,7 +1,10 @@
 import CaseStudy from './components/CaseStudy'
 import TagEmAllCase from './components/TagEmAllCase'
+import { useState } from 'react'
 
 function App() {
+  const [language, setLanguage] = useState('en')
+
   return (
     <div className="min-h-screen bg-[#F5F5F0]">
       {/* Header */}
@@ -88,7 +91,35 @@ function App() {
       {/* About Section */}
       <section id="about" className="py-32">
         <div className="container max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl md:text-4xl font-medium text-gray-900 mb-12">About Me</h2>
+          <div className="flex justify-between items-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-medium text-gray-900">
+              {language === 'en' ? 'About Me' : 'À propos de moi'}
+            </h2>
+            <div className="flex space-x-4">
+              <button
+                onClick={() => setLanguage('en')}
+                className={`px-4 py-2 text-sm font-medium rounded-full transition-colors duration-200 ${
+                  language === 'en'
+                    ? 'bg-gray-900 text-white'
+                    : 'text-gray-600 hover:text-gray-900'
+                }`}
+                aria-label="Switch to English"
+              >
+                EN
+              </button>
+              <button
+                onClick={() => setLanguage('fr')}
+                className={`px-4 py-2 text-sm font-medium rounded-full transition-colors duration-200 ${
+                  language === 'fr'
+                    ? 'bg-gray-900 text-white'
+                    : 'text-gray-600 hover:text-gray-900'
+                }`}
+                aria-label="Passer au français"
+              >
+                FR
+              </button>
+            </div>
+          </div>
           <div className="flex flex-col md:flex-row gap-12 items-start">
             <div className="w-full md:w-1/2 relative group">
               <img 
@@ -104,7 +135,10 @@ function App() {
             </div>
             <div className="w-full md:w-1/2">
               <p className="text-lg text-gray-600 leading-relaxed">
-                I'm Myriam, a first-gen CS student from the Magdalen Islands. I blend curiosity, aesthetics, and empathy to design experiences that feel intuitive and human. From airport shifts to game jams and EDM festivals, I've always believed in showing up fully — and helping others do the same through technology.
+                {language === 'en' 
+                  ? "I'm Myriam, a first-gen CS student from the Magdalen Islands. I blend curiosity, aesthetics, and empathy to design experiences that feel intuitive and human. From airport shifts to game jams and EDM festivals, I've always believed in showing up fully — and helping others do the same through technology."
+                  : "Je suis Myriam, étudiante en informatique et première de ma famille à fréquenter l'université. Originaire des Îles-de-la-Madeleine, je combine curiosité, esthétisme et empathie pour créer des expériences technologiques humaines et intuitives. Entre les shifts à l'aéroport, les festivals et les game jams, j'ai toujours cru en l'importance de se montrer pleinement — et d'aider les autres à en faire autant."
+                }
               </p>
             </div>
           </div>
