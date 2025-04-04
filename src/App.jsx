@@ -8,6 +8,7 @@ import ThemeToggle from './components/ThemeToggle'
 function App() {
   const [language, setLanguage] = useState('en')
   const [visitorType, setVisitorType] = useState(null)
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   useEffect(() => {
     const savedLang = localStorage.getItem('language')
@@ -16,10 +17,27 @@ function App() {
     }
   }, [])
 
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen)
+  }
+
+  const closeMenu = () => {
+    setIsMenuOpen(false)
+  }
+
   const translations = {
     en: {
       name: "I'm Myriam Leblanc",
       identity: "UX designer-in-training with a deep love for simplicity, beauty, and systems that empower people.",
+      visitorType: {
+        title: "What brings you here?",
+        recruiter: "Recruiter",
+        designer: "Designer",
+        explorer: "Explorer",
+        recruiterResponse: "Here's a glimpse of what I value and create.",
+        designerResponse: "Always open to meaningful builds and curious conversations.",
+        explorerResponse: "Glad you're here. I hope something sparks your mind or heart."
+      },
       question: "What brings you here?",
       buttons: {
         recruiter: "Recruiter",
@@ -62,6 +80,15 @@ function App() {
     fr: {
       name: "Moi, c'est Myriam",
       identity: "Designer UX en formation avec une passion pour la simplicité, la beauté et les systèmes qui autonomisent les gens.",
+      visitorType: {
+        title: "Qu'est-ce qui vous amène ici?",
+        recruiter: "Recruteur",
+        designer: "Designer",
+        explorer: "Explorateur",
+        recruiterResponse: "Voici un aperçu de ce que je valorise et crée.",
+        designerResponse: "Toujours ouvert aux collaborations significatives et aux conversations enrichissantes.",
+        explorerResponse: "Ravi que vous soyez ici. J'espère que quelque chose captivera votre esprit ou votre cœur."
+      },
       question: "Qu'est-ce qui vous amène ici?",
       buttons: {
         recruiter: "Recruteur",
@@ -137,11 +164,43 @@ function App() {
                     {/* Navigation content */}
                     <div className="max-w-screen-md mx-auto px-4">
                       <div className="flex justify-between items-center py-4">
-                        <ul className="flex justify-center space-x-12">
+                        {/* Mobile menu button */}
+                        <button
+                          onClick={toggleMenu}
+                          className="md:hidden text-[#1A202C] dark:text-white"
+                          aria-label="Toggle menu"
+                        >
+                          <svg
+                            className="w-6 h-6"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            {isMenuOpen ? (
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={2}
+                                d="M6 18L18 6M6 6l12 12"
+                              />
+                            ) : (
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={2}
+                                d="M4 6h16M4 12h16M4 18h16"
+                              />
+                            )}
+                          </svg>
+                        </button>
+
+                        {/* Desktop Navigation */}
+                        <ul className="hidden md:flex justify-center space-x-12">
                           <li>
                             <a 
                               href="#projects" 
                               className="text-lg text-[#1A202C] hover:text-purple-600 transition-colors duration-300 relative group"
+                              onClick={closeMenu}
                             >
                               {t.nav.projects}
                               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-purple-500 to-pink-500 group-hover:w-full transition-all duration-300"></span>
@@ -151,6 +210,7 @@ function App() {
                             <a 
                               href="#about" 
                               className="text-lg text-[#1A202C] hover:text-blue-600 transition-colors duration-300 relative group"
+                              onClick={closeMenu}
                             >
                               {t.nav.about}
                               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-500 to-purple-500 group-hover:w-full transition-all duration-300"></span>
@@ -160,6 +220,7 @@ function App() {
                             <a 
                               href="#resume" 
                               className="text-lg text-[#1A202C] hover:text-pink-600 transition-colors duration-300 relative group"
+                              onClick={closeMenu}
                             >
                               {t.nav.resume}
                               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-pink-500 to-blue-500 group-hover:w-full transition-all duration-300"></span>
@@ -169,9 +230,52 @@ function App() {
                             <a 
                               href="#contact" 
                               className="text-lg text-[#1A202C] hover:text-pink-600 transition-colors duration-300 relative group"
+                              onClick={closeMenu}
                             >
                               {t.nav.contact}
                               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-pink-500 to-blue-500 group-hover:w-full transition-all duration-300"></span>
+                            </a>
+                          </li>
+                        </ul>
+                      </div>
+
+                      {/* Mobile Navigation Menu */}
+                      <div className={`md:hidden ${isMenuOpen ? 'block' : 'hidden'}`}>
+                        <ul className="py-4 space-y-4">
+                          <li>
+                            <a 
+                              href="#projects" 
+                              className="block text-lg text-[#1A202C] dark:text-white hover:text-purple-600 dark:hover:text-purple-300 transition-colors duration-300"
+                              onClick={closeMenu}
+                            >
+                              {t.nav.projects}
+                            </a>
+                          </li>
+                          <li>
+                            <a 
+                              href="#about" 
+                              className="block text-lg text-[#1A202C] dark:text-white hover:text-blue-600 dark:hover:text-blue-300 transition-colors duration-300"
+                              onClick={closeMenu}
+                            >
+                              {t.nav.about}
+                            </a>
+                          </li>
+                          <li>
+                            <a 
+                              href="#resume" 
+                              className="block text-lg text-[#1A202C] dark:text-white hover:text-pink-600 dark:hover:text-pink-300 transition-colors duration-300"
+                              onClick={closeMenu}
+                            >
+                              {t.nav.resume}
+                            </a>
+                          </li>
+                          <li>
+                            <a 
+                              href="#contact" 
+                              className="block text-lg text-[#1A202C] dark:text-white hover:text-pink-600 dark:hover:text-pink-300 transition-colors duration-300"
+                              onClick={closeMenu}
+                            >
+                              {t.nav.contact}
                             </a>
                           </li>
                         </ul>
@@ -220,123 +324,69 @@ function App() {
                 </section>
 
                 {/* Visitor Type Section */}
-                <div className="relative mt-10">
-                  <motion.div 
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.5 }}
-                    className="absolute inset-0 bg-gradient-to-r from-pink-100/90 via-purple-100/90 to-blue-100/90 dark:from-gray-800/90 dark:via-gray-700/90 dark:to-gray-800/90 backdrop-blur-lg animate-gradient-x rounded-3xl max-w-2xl mx-auto"
-                  />
-                  <motion.div 
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: 0.2 }}
-                    className="relative space-y-8 py-12 px-8 md:px-12 max-w-2xl mx-auto"
-                  >
-                    <motion.p 
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.5 }}
-                      className="text-xl md:text-2xl text-white text-center font-light tracking-wide mb-8"
-                    >
-                      {t.question}
-                    </motion.p>
-                    <div className="flex justify-center gap-4 flex-wrap">
-                      <motion.button
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.5, delay: 0.1 }}
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                        onClick={() => setVisitorType('recruiter')}
-                        className={`relative group px-6 py-2 rounded-full transition-all duration-300 ${
-                          visitorType === 'recruiter' 
-                            ? 'text-purple-300 bg-white/90 shadow-lg' 
-                            : 'text-white hover:text-purple-300 hover:bg-white/70'
-                        }`}
-                      >
-                        <span className="relative z-10 text-base">{t.buttons.recruiter}</span>
-                        <motion.span 
-                          initial={{ opacity: 0 }}
-                          animate={{ opacity: visitorType === 'recruiter' ? 1 : 0 }}
-                          className="absolute inset-0 rounded-full bg-gradient-to-r from-purple-100 to-pink-100 group-hover:opacity-100 transition-opacity duration-300"
-                        />
-                      </motion.button>
-                      <motion.button
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.5, delay: 0.2 }}
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                        onClick={() => setVisitorType('designer')}
-                        className={`relative group px-6 py-2 rounded-full transition-all duration-300 ${
-                          visitorType === 'designer' 
-                            ? 'text-blue-300 bg-white/90 shadow-lg' 
-                            : 'text-white hover:text-blue-300 hover:bg-white/70'
-                        }`}
-                      >
-                        <span className="relative z-10 text-base">{t.buttons.designer}</span>
-                        <motion.span 
-                          initial={{ opacity: 0 }}
-                          animate={{ opacity: visitorType === 'designer' ? 1 : 0 }}
-                          className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-100 to-purple-100 group-hover:opacity-100 transition-opacity duration-300"
-                        />
-                      </motion.button>
-                      <motion.button
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.5, delay: 0.3 }}
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                        onClick={() => setVisitorType('explorer')}
-                        className={`relative group px-6 py-2 rounded-full transition-all duration-300 ${
-                          visitorType === 'explorer' 
-                            ? 'text-pink-300 bg-white/90 shadow-lg' 
-                            : 'text-white hover:text-pink-300 hover:bg-white/70'
-                        }`}
-                      >
-                        <span className="relative z-10 text-base">{t.buttons.explorer}</span>
-                        <motion.span 
-                          initial={{ opacity: 0 }}
-                          animate={{ opacity: visitorType === 'explorer' ? 1 : 0 }}
-                          className="absolute inset-0 rounded-full bg-gradient-to-r from-pink-100 to-blue-100 group-hover:opacity-100 transition-opacity duration-300"
-                        />
-                      </motion.button>
-                    </div>
-                    <AnimatePresence mode="wait">
-                      {visitorType && (
-                        <motion.p
-                          initial={{ opacity: 0, y: 10 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          exit={{ opacity: 0, y: 10 }}
-                          transition={{ duration: 0.3 }}
-                          className="text-base text-white italic text-center mt-4"
+                <section className="py-24 bg-gradient-to-br from-purple-50 via-pink-50 to-blue-50 dark:from-gray-800 dark:via-gray-700 dark:to-gray-800">
+                  <div className="max-w-screen-md mx-auto px-4">
+                    <h2 className="text-3xl font-medium mb-8 text-[#1A202C] dark:text-white">{t.visitorType.title}</h2>
+                    <div className="space-y-6">
+                      <div className="flex flex-wrap gap-4">
+                        <button
+                          onClick={() => setVisitorType('recruiter')}
+                          className={`px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 ${
+                            visitorType === 'recruiter'
+                              ? 'bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200'
+                              : 'bg-white/90 dark:bg-gray-800/90 text-[#1A202C] dark:text-white hover:text-purple-600 dark:hover:text-purple-300'
+                          }`}
                         >
-                          {t.responses[visitorType]}
-                        </motion.p>
-                      )}
-                    </AnimatePresence>
-                  </motion.div>
-                </div>
+                          {t.visitorType.recruiter}
+                        </button>
+                        <button
+                          onClick={() => setVisitorType('designer')}
+                          className={`px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 ${
+                            visitorType === 'designer'
+                              ? 'bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200'
+                              : 'bg-white/90 dark:bg-gray-800/90 text-[#1A202C] dark:text-white hover:text-blue-600 dark:hover:text-blue-300'
+                          }`}
+                        >
+                          {t.visitorType.designer}
+                        </button>
+                        <button
+                          onClick={() => setVisitorType('explorer')}
+                          className={`px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 ${
+                            visitorType === 'explorer'
+                              ? 'bg-pink-100 dark:bg-pink-900 text-pink-800 dark:text-pink-200'
+                              : 'bg-white/90 dark:bg-gray-800/90 text-[#1A202C] dark:text-white hover:text-pink-600 dark:hover:text-pink-300'
+                          }`}
+                        >
+                          {t.visitorType.explorer}
+                        </button>
+                      </div>
+                      <p className="text-gray-600 dark:text-gray-300">
+                        {visitorType === 'recruiter' && t.visitorType.recruiterResponse}
+                        {visitorType === 'designer' && t.visitorType.designerResponse}
+                        {visitorType === 'explorer' && t.visitorType.explorerResponse}
+                      </p>
+                    </div>
+                  </div>
+                </section>
 
                 {/* Projects Section */}
                 <section id="projects" className="py-24">
                   <div className="max-w-screen-md mx-auto px-4">
-                    <h2 className="text-3xl font-medium mb-8 text-white dark:text-gray-100">{t.projects.title}</h2>
+                    <h2 className="text-3xl font-medium mb-8 text-[#1A202C] dark:text-white">{t.projects.title}</h2>
                     <div className="space-y-8">
                       <div className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-green-50 via-teal-50 to-blue-50 dark:from-gray-800 dark:via-gray-700 dark:to-gray-800 p-8 shadow-lg transition-all duration-300 hover:shadow-xl">
                         <div className="absolute inset-0 bg-gradient-to-br from-green-100/20 via-teal-100/20 to-blue-100/20 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
                         <div className="relative z-10">
                           <Link to="/tag-em-all" className="block">
-                            <h3 className="text-xl font-light text-white mb-2 hover:text-teal-300 transition-colors duration-300">
+                            <h3 className="text-xl font-light text-[#1A202C] dark:text-white mb-2 hover:text-teal-600 dark:hover:text-teal-300 transition-colors duration-300">
                               {t.projects.tagEmAll}
                             </h3>
                           </Link>
-                          <p className="text-sm text-gray-200 dark:text-gray-300 max-w-xl mb-4">
+                          <p className="text-sm text-gray-600 dark:text-gray-300 max-w-xl mb-4">
                             {t.projects.tagEmAllDesc}
                           </p>
                           <motion.div 
-                            className="text-teal-300"
+                            className="text-teal-600 dark:text-teal-300"
                             whileHover={{ x: 5 }}
                             transition={{ type: "spring", stiffness: 300 }}
                           >
@@ -349,8 +399,8 @@ function App() {
                       <div className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-purple-50 via-pink-50 to-blue-50 dark:from-gray-800 dark:via-gray-700 dark:to-gray-800 p-8 shadow-lg transition-all duration-300 hover:shadow-xl">
                         <div className="absolute inset-0 bg-gradient-to-br from-purple-100/20 via-pink-100/20 to-blue-100/20 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
                         <div className="relative z-10">
-                          <h3 className="text-xl font-light text-white mb-2">{t.projects.igniteHerMind}</h3>
-                          <p className="text-sm text-gray-200 dark:text-gray-300 max-w-xl mb-4">
+                          <h3 className="text-xl font-light text-[#1A202C] dark:text-white mb-2">{t.projects.igniteHerMind}</h3>
+                          <p className="text-sm text-gray-600 dark:text-gray-300 max-w-xl mb-4">
                             {t.projects.igniteHerMindDesc}
                           </p>
                           <div className="flex items-center justify-between">
@@ -358,7 +408,7 @@ function App() {
                               Coming Soon
                             </span>
                             <motion.div 
-                              className="text-purple-300 dark:text-purple-400"
+                              className="text-purple-600 dark:text-purple-300"
                               whileHover={{ x: 5 }}
                               transition={{ type: "spring", stiffness: 300 }}
                             >
@@ -372,8 +422,8 @@ function App() {
                       <div className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-blue-50 via-green-50 to-teal-50 dark:from-gray-800 dark:via-gray-700 dark:to-gray-800 p-8 shadow-lg transition-all duration-300 hover:shadow-xl">
                         <div className="absolute inset-0 bg-gradient-to-br from-blue-100/20 via-green-100/20 to-teal-100/20 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
                         <div className="relative z-10">
-                          <h3 className="text-xl font-light text-white mb-2">{t.projects.uxTriathlon}</h3>
-                          <p className="text-sm text-gray-200 dark:text-gray-300 max-w-xl mb-4">
+                          <h3 className="text-xl font-light text-[#1A202C] dark:text-white mb-2">{t.projects.uxTriathlon}</h3>
+                          <p className="text-sm text-gray-600 dark:text-gray-300 max-w-xl mb-4">
                             {t.projects.uxTriathlonDesc}
                           </p>
                           <div className="flex items-center justify-between">
@@ -381,7 +431,7 @@ function App() {
                               Coming Soon
                             </span>
                             <motion.div 
-                              className="text-blue-300 dark:text-blue-400"
+                              className="text-blue-600 dark:text-blue-300"
                               whileHover={{ x: 5 }}
                               transition={{ type: "spring", stiffness: 300 }}
                             >
@@ -397,7 +447,7 @@ function App() {
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.5, delay: 0.4 }}
-                      className="text-center text-gray-200 dark:text-gray-300 italic text-sm mt-8"
+                      className="text-center text-gray-600 dark:text-gray-300 italic text-sm mt-8"
                     >
                       {t.projects.cta}
                     </motion.p>
@@ -407,7 +457,7 @@ function App() {
                 {/* About Section */}
                 <section id="about" className="py-24 bg-white/50 dark:bg-gray-900/50">
                   <div className="max-w-screen-md mx-auto px-4">
-                    <h2 className="text-3xl font-medium mb-8 text-white dark:text-gray-100">{t.about.title}</h2>
+                    <h2 className="text-3xl font-medium mb-8 text-[#1A202C] dark:text-white">{t.about.title}</h2>
                     <div className="flex flex-col md:flex-row items-start gap-12">
                       <div className="w-full md:w-1/2">
                         <div className="relative group">
@@ -424,10 +474,10 @@ function App() {
                         </div>
                       </div>
                       <div className="w-full md:w-1/2 space-y-6">
-                        <p className="text-gray-200 dark:text-gray-300">
+                        <p className="text-gray-600 dark:text-gray-300">
                           {t.about.intro}
                         </p>
-                        <p className="text-gray-200 dark:text-gray-300">
+                        <p className="text-gray-600 dark:text-gray-300">
                           {t.about.mission}
                         </p>
                       </div>
@@ -438,7 +488,7 @@ function App() {
                 {/* Resume Section */}
                 <section id="resume" className="py-24">
                   <div className="max-w-screen-md mx-auto px-4">
-                    <h2 className="text-3xl font-medium mb-8 text-white dark:text-gray-100">{t.nav.resume}</h2>
+                    <h2 className="text-3xl font-medium mb-8 text-[#1A202C] dark:text-white">{t.nav.resume}</h2>
                     <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8">
                       <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8">
                         <div>
@@ -515,14 +565,14 @@ function App() {
                 {/* Contact Section */}
                 <section id="contact" className="py-24">
                   <div className="max-w-screen-md mx-auto px-4">
-                    <h2 className="text-3xl font-medium mb-8 text-white dark:text-gray-100">{t.contact.title}</h2>
+                    <h2 className="text-3xl font-medium mb-8 text-[#1A202C] dark:text-white">{t.contact.title}</h2>
                     <div className="space-y-6">
-                      <p className="text-gray-200 dark:text-gray-300">
+                      <p className="text-gray-600 dark:text-gray-300">
                         {t.contact.message}
                       </p>
                       <a 
                         href="mailto:myriamleblanc230@gmail.com" 
-                        className="inline-flex items-center px-8 py-4 text-lg font-light text-white bg-transparent border-2 border-white rounded-full hover:bg-white hover:text-[#1A202C] transition-all duration-300 group"
+                        className="inline-flex items-center px-8 py-4 text-lg font-light text-[#1A202C] dark:text-white bg-transparent border-2 border-[#1A202C] dark:border-white rounded-full hover:bg-[#1A202C] dark:hover:bg-white hover:text-white dark:hover:text-[#1A202C] transition-all duration-300 group"
                       >
                         {t.contact.button}
                         <svg 
@@ -545,9 +595,9 @@ function App() {
                 </section>
 
                 {/* Footer */}
-                <footer className="py-8 text-center text-sm text-gray-200 dark:text-gray-300">
+                <footer className="py-8 text-center text-sm text-gray-600 dark:text-gray-300">
                   <div className="container text-center">
-                    <p className="text-sm text-gray-200 dark:text-gray-300">
+                    <p className="text-sm text-gray-600 dark:text-gray-300">
                       {t.footer}
                     </p>
                   </div>
