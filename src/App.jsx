@@ -31,7 +31,7 @@ function App() {
 
   const translations = {
     en: {
-      name: "I'm Myriam Leblanc ✶",
+      name: "I'm Myriam Leblanc",
       identity: "UX designer-in-training with a deep love for simplicity, beauty, and systems that empower people.",
       visitorType: {
         title: "What brings you here?",
@@ -138,7 +138,7 @@ function App() {
       }
     },
     fr: {
-      name: "I'm Myriam Leblanc ✶",
+      name: "Ici, Myriam Leblanc",
       identity: "Designer UX en formation avec une passion pour la simplicité, la beauté et les systèmes qui autonomisent les gens.",
       visitorType: {
         title: "Qu'est-ce qui vous amène ici?",
