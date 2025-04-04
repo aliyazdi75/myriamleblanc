@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import ThemeToggle from './components/ThemeToggle'
+import { FaLinkedin, FaGithub, FaInstagram } from 'react-icons/fa'
 
 function App() {
   const [language, setLanguage] = useState('en')
@@ -595,8 +596,38 @@ function App() {
                 </section>
 
                 {/* Footer */}
-                <footer className="py-8 text-center text-sm text-gray-600 dark:text-gray-300">
-                  <div className="container text-center">
+                <footer className="py-8 text-center">
+                  <div className="container mx-auto px-4">
+                    {/* Social Media Icons */}
+                    <div className="flex justify-center gap-6 mb-6">
+                      <a 
+                        href="https://www.linkedin.com/in/myriam-leblanc-854363202" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="text-gray-500 hover:text-[#1A202C] dark:hover:text-white transition-colors duration-300 text-2xl hover:opacity-80"
+                        aria-label="LinkedIn"
+                      >
+                        <FaLinkedin />
+                      </a>
+                      <a 
+                        href="https://github.com/myriamleblanc" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="text-gray-500 hover:text-[#1A202C] dark:hover:text-white transition-colors duration-300 text-2xl hover:opacity-80"
+                        aria-label="GitHub"
+                      >
+                        <FaGithub />
+                      </a>
+                      <a 
+                        href="https://www.instagram.com/myriamleblanc_" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="text-gray-500 hover:text-[#1A202C] dark:hover:text-white transition-colors duration-300 text-2xl hover:opacity-80"
+                        aria-label="Instagram"
+                      >
+                        <FaInstagram />
+                      </a>
+                    </div>
                     <p className="text-sm text-gray-600 dark:text-gray-300">
                       {t.footer}
                     </p>
