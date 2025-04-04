@@ -124,14 +124,19 @@ function App() {
           tagEmAll: {
             title: "Tag 'Em All",
             description: "48h Game Jam Sherbrooke 2025 - Crafted the UI/UX for Tag 'Em All, a fast-paced multiplayer game with a focus on intuitive navigation"
+          }
+        },
+        certifications: {
+          title: "Certifications",
+          dataViz: {
+            title: "Data Visualization",
+            provider: "Calcul Quebec",
+            description: "Advanced data visualization techniques and best practices"
           },
-          igniteHerMind: {
-            title: "ignite.HER.MIND",
-            description: "Empowering women through digital curation - Coming Soon"
-          },
-          uxTriathlon: {
-            title: "UX + Triathlon",
-            description: "Tracking calm & chaos in motion - Coming Soon"
+          uxCert: {
+            title: "UX Design Certificate",
+            provider: "Google & Coursera",
+            description: "Comprehensive UX design principles and methodologies"
           }
         },
         downloadButton: "Download Resume"
@@ -231,14 +236,19 @@ function App() {
           tagEmAll: {
             title: "Tag 'Em All",
             description: "48h Game Jam Sherbrooke 2025 - Conception de l'interface UI/UX pour Tag 'Em All, un jeu multijoueur dynamique axé sur une navigation intuitive"
+          }
+        },
+        certifications: {
+          title: "Certifications",
+          dataViz: {
+            title: "Visualisation de Données",
+            provider: "Calcul Quebec",
+            description: "Techniques avancées et meilleures pratiques de visualisation de données"
           },
-          igniteHerMind: {
-            title: "ignite.HER.MIND",
-            description: "Autonomisation des femmes par la curation numérique - À venir"
-          },
-          uxTriathlon: {
-            title: "UX + Triathlon",
-            description: "Suivi du calme et du chaos en mouvement - À venir"
+          uxCert: {
+            title: "Certificat en Design UX",
+            provider: "Google & Coursera",
+            description: "Principes et méthodologies complets du design UX"
           }
         },
         downloadButton: "Télécharger le CV"
@@ -748,12 +758,26 @@ function App() {
                         <div>
                           <h4 className="text-xl font-medium text-[#1A202C] dark:text-white mb-4">{t.resume.projects.title}</h4>
                           <div className="space-y-4">
-                            {Object.entries(t.resume.projects).filter(([key]) => key !== 'title').map(([project, { title, description }]) => (
-                              <div key={project}>
-                                <h5 className="font-medium text-[#1A202C] dark:text-white">{title}</h5>
-                                <p className="text-gray-600 dark:text-gray-300">{description}</p>
-                              </div>
-                            ))}
+                            <div>
+                              <h5 className="font-medium text-[#1A202C] dark:text-white">{t.resume.projects.tagEmAll.title}</h5>
+                              <p className="text-gray-600 dark:text-gray-300">{t.resume.projects.tagEmAll.description}</p>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div>
+                          <h4 className="text-xl font-medium text-[#1A202C] dark:text-white mb-4">{t.resume.certifications.title}</h4>
+                          <div className="space-y-4">
+                            <div>
+                              <h5 className="font-medium text-[#1A202C] dark:text-white">{t.resume.certifications.dataViz.title}</h5>
+                              <p className="text-sm text-purple-600 dark:text-purple-400 mb-1">{t.resume.certifications.dataViz.provider}</p>
+                              <p className="text-gray-600 dark:text-gray-300">{t.resume.certifications.dataViz.description}</p>
+                            </div>
+                            <div>
+                              <h5 className="font-medium text-[#1A202C] dark:text-white">{t.resume.certifications.uxCert.title}</h5>
+                              <p className="text-sm text-purple-600 dark:text-purple-400 mb-1">{t.resume.certifications.uxCert.provider}</p>
+                              <p className="text-gray-600 dark:text-gray-300">{t.resume.certifications.uxCert.description}</p>
+                            </div>
                           </div>
                         </div>
                       </div>
