@@ -5,18 +5,21 @@ import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import ThemeToggle from './components/ThemeToggle'
 import { FaLinkedin, FaGithub, FaInstagram } from 'react-icons/fa'
+import LanguageToggle from './components/LanguageToggle'
+import ScrollIndicator from './components/ScrollIndicator'
 
 function App() {
-  const [language, setLanguage] = useState('en')
-  const [visitorType, setVisitorType] = useState(null)
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [language, setLanguage] = useState(() => {
+    const savedLanguage = localStorage.getItem('language');
+    return savedLanguage || 'en';
+  });
 
   useEffect(() => {
-    const savedLang = localStorage.getItem('language')
-    if (savedLang) {
-      setLanguage(savedLang)
-    }
-  }, [])
+    localStorage.setItem('language', language);
+  }, [language]);
+
+  const [visitorType, setVisitorType] = useState(null)
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen)
@@ -28,7 +31,7 @@ function App() {
 
   const translations = {
     en: {
-      name: "I'm Myriam Leblanc",
+      name: "I'm Myriam Leblanc ✶",
       identity: "UX designer-in-training with a deep love for simplicity, beauty, and systems that empower people.",
       visitorType: {
         title: "What brings you here?",
@@ -58,8 +61,8 @@ function App() {
       },
       projects: {
         title: "Projects",
-        tagEmAll: "→ Tag 'Em All · Visual onboarding in 48h",
-        tagEmAllDesc: "A playful comic strip that guides users through the power of tagging, making complex concepts feel intuitive and engaging.",
+        tagEmAll: "→ Tag 'Em All · 48h Game Jam Sherbrooke 2025",
+        tagEmAllDesc: "Crafted the UI/UX for Tag 'Em All, a fast-paced multiplayer game with a focus on intuitive navigation.",
         igniteHerMind: "→ ignite.HER.MIND · Empowering women through digital curation",
         igniteHerMindDesc: "A digital platform designed to amplify women's voices and stories through thoughtful content curation and community building.",
         uxTriathlon: "→ UX + Triathlon · Tracking calm & chaos in motion",
@@ -76,10 +79,66 @@ function App() {
         message: "I'm always open to meaningful conversations, creative collaborations, or simply connecting with curious minds.",
         button: "Send me an email"
       },
-      footer: "Curiosity is my compass. Elegance is my practice. Tech is my tool."
+      footer: "Curiosity is my compass. Elegance is my practice. Tech is my tool.",
+      resume: {
+        title: "Resume",
+        role: "UX Designer & Developer",
+        email: "myriamleblanc230@gmail.com",
+        education: {
+          title: "Education",
+          degree: "B.Sc. Computer Science – Bishop's University",
+          description: "Second-year student crafting intuitive digital experiences. Focus on UX design, web development, and human-centered computing.",
+          courses: {
+            webDesign: "Interactive Web Design",
+            dataStructures: "Data Structures",
+            python: "Python",
+            ethics: "Computer Ethics",
+            marketing: "Digital Marketing"
+          }
+        },
+        skills: {
+          title: "Skills",
+          figma: {
+            name: "Figma",
+            description: "– core design tool"
+          },
+          htmlCss: {
+            name: "HTML/CSS",
+            description: "– foundational for front-end and understanding structure/layout"
+          },
+          javascript: {
+            name: "JavaScript",
+            description: "– essential for interaction and UX logic"
+          },
+          react: {
+            name: "React",
+            description: "– great if you've built any interactive projects or plan to"
+          },
+          tailwind: {
+            name: "Tailwind CSS",
+            description: "– modern styling, useful if you've used it in projects"
+          }
+        },
+        projects: {
+          title: "Projects",
+          tagEmAll: {
+            title: "Tag 'Em All",
+            description: "48h Game Jam Sherbrooke 2025 - Crafted the UI/UX for Tag 'Em All, a fast-paced multiplayer game with a focus on intuitive navigation"
+          },
+          igniteHerMind: {
+            title: "ignite.HER.MIND",
+            description: "Empowering women through digital curation - Coming Soon"
+          },
+          uxTriathlon: {
+            title: "UX + Triathlon",
+            description: "Tracking calm & chaos in motion - Coming Soon"
+          }
+        },
+        downloadButton: "Download Resume"
+      }
     },
     fr: {
-      name: "Moi, c'est Myriam",
+      name: "I'm Myriam Leblanc ✶",
       identity: "Designer UX en formation avec une passion pour la simplicité, la beauté et les systèmes qui autonomisent les gens.",
       visitorType: {
         title: "Qu'est-ce qui vous amène ici?",
@@ -109,8 +168,8 @@ function App() {
       },
       projects: {
         title: "Projets",
-        tagEmAll: "→ Tag 'Em All · Onboarding visuel en 48h",
-        tagEmAllDesc: "Une bande dessinée ludique qui guide les utilisateurs à travers la puissance du tagging, rendant les concepts complexes intuitifs et engageants.",
+        tagEmAll: "→ Tag 'Em All · 48h Game Jam Sherbrooke 2025",
+        tagEmAllDesc: "Conception de l'interface UI/UX pour Tag 'Em All, un jeu multijoueur dynamique axé sur une navigation intuitive.",
         igniteHerMind: "→ ignite.HER.MIND · Autonomisation des femmes par la curation numérique",
         igniteHerMindDesc: "Une plateforme numérique conçue pour amplifier les voix et les histoires des femmes à travers une curation de contenu réfléchie et la construction de communauté.",
         uxTriathlon: "→ UX + Triathlon · Suivi du calme & du chaos en mouvement",
@@ -127,7 +186,63 @@ function App() {
         message: "Je suis toujours ouverte aux conversations significatives, aux collaborations créatives ou simplement à la connexion avec des esprits curieux.",
         button: "M'envoyer un email"
       },
-      footer: "La curiosité est ma boussole. L'élégance est ma pratique. La technologie est mon outil."
+      footer: "La curiosité est ma boussole. L'élégance est ma pratique. La technologie est mon outil.",
+      resume: {
+        title: "CV",
+        role: "Designer UX & Développeuse",
+        email: "myriamleblanc230@gmail.com",
+        education: {
+          title: "Formation",
+          degree: "B.Sc. Informatique – Université Bishop's",
+          description: "Étudiante de deuxième année créant des expériences numériques intuitives. Spécialisation en design UX, développement web et informatique centrée sur l'humain.",
+          courses: {
+            webDesign: "Design Web Interactif",
+            dataStructures: "Structures de Données",
+            python: "Python",
+            ethics: "Éthique Informatique",
+            marketing: "Marketing Numérique"
+          }
+        },
+        skills: {
+          title: "Compétences",
+          figma: {
+            name: "Figma",
+            description: "– outil principal de design"
+          },
+          htmlCss: {
+            name: "HTML/CSS",
+            description: "– fondamental pour le front-end et la compréhension de la structure/mise en page"
+          },
+          javascript: {
+            name: "JavaScript",
+            description: "– essentiel pour l'interaction et la logique UX"
+          },
+          react: {
+            name: "React",
+            description: "– parfait pour les projets interactifs actuels et futurs"
+          },
+          tailwind: {
+            name: "Tailwind CSS",
+            description: "– style moderne, utile dans les projets"
+          }
+        },
+        projects: {
+          title: "Projets",
+          tagEmAll: {
+            title: "Tag 'Em All",
+            description: "48h Game Jam Sherbrooke 2025 - Conception de l'interface UI/UX pour Tag 'Em All, un jeu multijoueur dynamique axé sur une navigation intuitive"
+          },
+          igniteHerMind: {
+            title: "ignite.HER.MIND",
+            description: "Autonomisation des femmes par la curation numérique - À venir"
+          },
+          uxTriathlon: {
+            title: "UX + Triathlon",
+            description: "Suivi du calme et du chaos en mouvement - À venir"
+          }
+        },
+        downloadButton: "Télécharger le CV"
+      }
     }
   }
 
@@ -136,6 +251,7 @@ function App() {
   return (
     <div className="min-h-screen bg-[#FDFBF7] dark:bg-gray-950 text-text-primary dark:text-gray-100 transition-colors duration-300">
       <ThemeToggle />
+      <ScrollIndicator />
       <Router>
         <AnimatePresence mode="wait">
           <Routes>
@@ -288,39 +404,72 @@ function App() {
                 {/* Hero Section */}
                 <section className="min-h-screen flex items-center justify-center px-4">
                   <div className="max-w-4xl mx-auto text-center">
+                    <div className="mb-8 flex justify-center">
+                      <LanguageToggle 
+                        language={language} 
+                        onLanguageChange={setLanguage}
+                      />
+                    </div>
+                    
                     <motion.h1 
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.5 }}
-                      className="text-4xl md:text-6xl font-light mb-6 text-text-primary dark:text-gray-100"
+                      transition={{ 
+                        duration: 0.8,
+                        ease: [0.6, -0.05, 0.01, 0.99]
+                      }}
+                      className="text-4xl md:text-6xl font-light mb-6 text-text-primary dark:text-gray-100 font-petrona"
                     >
                       {t.name}
                     </motion.h1>
                     <motion.p 
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.5, delay: 0.1 }}
-                      className="text-xl md:text-2xl text-text-secondary dark:text-gray-300 mb-8"
+                      transition={{ 
+                        duration: 0.8,
+                        delay: 0.2,
+                        ease: [0.6, -0.05, 0.01, 0.99]
+                      }}
+                      className="text-xl md:text-2xl text-text-secondary dark:text-gray-300 mb-8 font-work-sans"
                     >
                       {t.identity}
                     </motion.p>
-                    {/* Decorative Arrow */}
-                    <div className="flex justify-center mt-8">
-                      <svg 
-                        className="w-8 h-8 text-gray-400 animate-bounce" 
-                        fill="none" 
-                        stroke="currentColor" 
-                        viewBox="0 0 24 24"
-                        aria-hidden="true"
-                      >
-                        <path 
-                          strokeLinecap="round" 
-                          strokeLinejoin="round" 
-                          strokeWidth={1.5} 
-                          d="M19 14l-7 7m0 0l-7-7m7 7V3" 
-                        />
-                      </svg>
-                    </div>
+                    {/* Mouse Scroller */}
+                    <motion.div 
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ 
+                        duration: 0.8,
+                        delay: 0.4,
+                        ease: [0.6, -0.05, 0.01, 0.99]
+                      }}
+                      className="flex justify-center mt-8"
+                    >
+                      <a href="#about" className="group">
+                        <svg 
+                          className="w-8 h-8 text-gray-400 group-hover:text-gray-600 dark:group-hover:text-gray-200 transition-colors duration-300" 
+                          fill="none" 
+                          stroke="currentColor" 
+                          viewBox="0 0 24 24"
+                          aria-hidden="true"
+                        >
+                          <motion.path 
+                            strokeLinecap="round" 
+                            strokeLinejoin="round" 
+                            strokeWidth={1.5} 
+                            d="M19 14l-7 7m0 0l-7-7m7 7V3"
+                            animate={{
+                              y: [0, 5, 0],
+                            }}
+                            transition={{
+                              duration: 1.5,
+                              repeat: Infinity,
+                              ease: "easeInOut"
+                            }}
+                          />
+                        </svg>
+                      </a>
+                    </motion.div>
                   </div>
                 </section>
 
@@ -489,74 +638,92 @@ function App() {
                 {/* Resume Section */}
                 <section id="resume" className="py-24">
                   <div className="max-w-screen-md mx-auto px-4">
-                    <h2 className="text-3xl font-medium mb-8 text-[#1A202C] dark:text-white">{t.nav.resume}</h2>
+                    <h2 className="text-3xl font-medium mb-8 text-[#1A202C] dark:text-white">{t.resume.title}</h2>
                     <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8">
                       <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8">
                         <div>
-                          <h3 className="text-2xl font-medium text-[#1A202C] dark:text-white">Myriam Leblanc</h3>
-                          <p className="text-gray-600 dark:text-gray-300">UX Designer & Developer</p>
+                          <h3 className="text-2xl font-medium text-[#1A202C] dark:text-white">{t.resume.role}</h3>
+                          <p className="text-gray-600 dark:text-gray-300">
+                            {t.resume.email}
+                          </p>
                         </div>
                         <div className="mt-4 md:mt-0">
                           <a 
                             href="mailto:myriamleblanc230@gmail.com" 
                             className="text-purple-600 hover:text-purple-700 dark:text-purple-400 dark:hover:text-purple-300"
                           >
-                            myriamleblanc230@gmail.com
+                            {t.resume.email}
                           </a>
                         </div>
                       </div>
                       
                       <div className="space-y-8">
                         <div>
-                          <h4 className="text-xl font-medium text-[#1A202C] dark:text-white mb-4">Education</h4>
+                          <h4 className="text-xl font-medium text-[#1A202C] dark:text-white mb-4">{t.resume.education.title}</h4>
                           <div className="space-y-4">
                             <div>
-                              <h5 className="font-medium text-[#1A202C] dark:text-white">Computer Science</h5>
-                              <p className="text-gray-600 dark:text-gray-300">First-generation CS student</p>
+                              <h5 className="font-medium text-[#1A202C] dark:text-white">{t.resume.education.degree}</h5>
+                              <p className="text-gray-600 dark:text-gray-300">{t.resume.education.description}</p>
+                              <div className="mt-2 flex flex-wrap gap-2">
+                                {Object.values(t.resume.education.courses).map((course, index) => (
+                                  <span key={index} className="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 rounded-full text-xs">
+                                    {course}
+                                  </span>
+                                ))}
+                              </div>
                             </div>
                           </div>
                         </div>
                         
                         <div>
-                          <h4 className="text-xl font-medium text-[#1A202C] dark:text-white mb-4">Skills</h4>
-                          <div className="flex flex-wrap gap-2">
-                            <span className="px-3 py-1 bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 rounded-full text-sm">UX Design</span>
-                            <span className="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm">React</span>
-                            <span className="px-3 py-1 bg-pink-100 dark:bg-pink-900 text-pink-800 dark:text-pink-200 rounded-full text-sm">JavaScript</span>
-                            <span className="px-3 py-1 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 rounded-full text-sm">HTML/CSS</span>
-                            <span className="px-3 py-1 bg-teal-100 dark:bg-teal-900 text-teal-800 dark:text-teal-200 rounded-full text-sm">Tailwind CSS</span>
+                          <h4 className="text-xl font-medium text-[#1A202C] dark:text-white mb-4">{t.resume.skills.title}</h4>
+                          <div className="flex flex-wrap gap-3">
+                            {Object.entries(t.resume.skills).filter(([key]) => key !== 'title').map(([skill, { name, description }]) => (
+                              <div key={skill} className="group">
+                                <span className={`px-4 py-2 ${
+                                  skill === 'figma' ? 'bg-violet-100 dark:bg-violet-900/50 text-violet-800 dark:text-violet-200' :
+                                  skill === 'htmlCss' ? 'bg-emerald-100 dark:bg-emerald-900/50 text-emerald-800 dark:text-emerald-200' :
+                                  skill === 'javascript' ? 'bg-amber-100 dark:bg-amber-900/50 text-amber-800 dark:text-amber-200' :
+                                  skill === 'react' ? 'bg-blue-100 dark:bg-blue-900/50 text-blue-800 dark:text-blue-200' :
+                                  'bg-cyan-100 dark:bg-cyan-900/50 text-cyan-800 dark:text-cyan-200'
+                                } rounded-full text-sm inline-flex items-center hover:bg-opacity-75 transition-colors duration-300`}>
+                                  <span className="font-medium">{name}</span>
+                                  <span className={`ml-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ${
+                                    skill === 'figma' ? 'text-violet-600 dark:text-violet-300' :
+                                    skill === 'htmlCss' ? 'text-emerald-600 dark:text-emerald-300' :
+                                    skill === 'javascript' ? 'text-amber-600 dark:text-amber-300' :
+                                    skill === 'react' ? 'text-blue-600 dark:text-blue-300' :
+                                    'text-cyan-600 dark:text-cyan-300'
+                                  }`}>{description}</span>
+                                </span>
+                              </div>
+                            ))}
                           </div>
                         </div>
                         
                         <div>
-                          <h4 className="text-xl font-medium text-[#1A202C] dark:text-white mb-4">Projects</h4>
+                          <h4 className="text-xl font-medium text-[#1A202C] dark:text-white mb-4">{t.resume.projects.title}</h4>
                           <div className="space-y-4">
-                            <div>
-                              <h5 className="font-medium text-[#1A202C] dark:text-white">Tag 'Em All</h5>
-                              <p className="text-gray-600 dark:text-gray-300">Visual onboarding in 48h - A playful comic strip that guides users through the power of tagging</p>
-                            </div>
-                            <div>
-                              <h5 className="font-medium text-[#1A202C] dark:text-white">ignite.HER.MIND</h5>
-                              <p className="text-gray-600 dark:text-gray-300">Empowering women through digital curation - Coming Soon</p>
-                            </div>
-                            <div>
-                              <h5 className="font-medium text-[#1A202C] dark:text-white">UX + Triathlon</h5>
-                              <p className="text-gray-600 dark:text-gray-300">Tracking calm & chaos in motion - Coming Soon</p>
-                            </div>
+                            {Object.entries(t.resume.projects).filter(([key]) => key !== 'title').map(([project, { title, description }]) => (
+                              <div key={project}>
+                                <h5 className="font-medium text-[#1A202C] dark:text-white">{title}</h5>
+                                <p className="text-gray-600 dark:text-gray-300">{description}</p>
+                              </div>
+                            ))}
                           </div>
                         </div>
                       </div>
                       
                       <div className="mt-8 pt-8 border-t border-gray-200 dark:border-gray-700">
                         <a 
-                          href="/resume.pdf" 
-                          download
+                          href="/ML.cv25.pdf" 
+                          download="Myriam_Leblanc_CV.pdf"
                           className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-full hover:from-purple-600 hover:to-pink-600 transition-all duration-300 shadow-md hover:shadow-lg"
                         >
                           <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
                           </svg>
-                          Download Resume
+                          {t.resume.downloadButton}
                         </a>
                       </div>
                     </div>

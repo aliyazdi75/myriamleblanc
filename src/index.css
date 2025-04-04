@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Petrona:wght@300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -35,6 +38,14 @@
   
   .body-text {
     @apply text-lg font-light;
+  }
+
+  .font-petrona {
+    font-family: 'Petrona', serif;
+  }
+
+  .font-work-sans {
+    font-family: 'Work Sans', sans-serif;
   }
 }
 
