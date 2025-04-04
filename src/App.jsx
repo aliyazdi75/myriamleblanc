@@ -357,9 +357,38 @@ function App() {
                       </div>
 
                       {/* Mobile Navigation Menu */}
-                      <div className={`md:hidden ${isMenuOpen ? 'block' : 'hidden'}`}>
-                        <ul className="py-4 space-y-4">
-                          <li>
+                      <motion.div 
+                        className={`md:hidden fixed inset-x-0 top-[60px] bg-white/95 dark:bg-gray-900/95 backdrop-blur-lg border-b border-gray-200/50 dark:border-gray-700/50 shadow-lg`}
+                        initial="closed"
+                        animate={isMenuOpen ? "open" : "closed"}
+                        variants={{
+                          open: { 
+                            opacity: 1,
+                            height: "auto",
+                            transition: {
+                              type: "spring",
+                              stiffness: 300,
+                              damping: 30
+                            }
+                          },
+                          closed: { 
+                            opacity: 0,
+                            height: 0,
+                            transition: {
+                              type: "spring",
+                              stiffness: 300,
+                              damping: 30
+                            }
+                          }
+                        }}
+                      >
+                        <ul className="py-4 px-6 space-y-4">
+                          <motion.li
+                            variants={{
+                              open: { x: 0, opacity: 1 },
+                              closed: { x: -20, opacity: 0 }
+                            }}
+                          >
                             <a 
                               href="#projects" 
                               className="block text-lg text-[#1A202C] dark:text-white hover:text-purple-600 dark:hover:text-purple-300 transition-colors duration-300"
@@ -367,8 +396,13 @@ function App() {
                             >
                               {t.nav.projects}
                             </a>
-                          </li>
-                          <li>
+                          </motion.li>
+                          <motion.li
+                            variants={{
+                              open: { x: 0, opacity: 1, transition: { delay: 0.1 } },
+                              closed: { x: -20, opacity: 0 }
+                            }}
+                          >
                             <a 
                               href="#about" 
                               className="block text-lg text-[#1A202C] dark:text-white hover:text-blue-600 dark:hover:text-blue-300 transition-colors duration-300"
@@ -376,8 +410,13 @@ function App() {
                             >
                               {t.nav.about}
                             </a>
-                          </li>
-                          <li>
+                          </motion.li>
+                          <motion.li
+                            variants={{
+                              open: { x: 0, opacity: 1, transition: { delay: 0.2 } },
+                              closed: { x: -20, opacity: 0 }
+                            }}
+                          >
                             <a 
                               href="#resume" 
                               className="block text-lg text-[#1A202C] dark:text-white hover:text-pink-600 dark:hover:text-pink-300 transition-colors duration-300"
@@ -385,8 +424,13 @@ function App() {
                             >
                               {t.nav.resume}
                             </a>
-                          </li>
-                          <li>
+                          </motion.li>
+                          <motion.li
+                            variants={{
+                              open: { x: 0, opacity: 1, transition: { delay: 0.3 } },
+                              closed: { x: -20, opacity: 0 }
+                            }}
+                          >
                             <a 
                               href="#contact" 
                               className="block text-lg text-[#1A202C] dark:text-white hover:text-pink-600 dark:hover:text-pink-300 transition-colors duration-300"
@@ -394,9 +438,9 @@ function App() {
                             >
                               {t.nav.contact}
                             </a>
-                          </li>
+                          </motion.li>
                         </ul>
-                      </div>
+                      </motion.div>
                     </div>
                   </div>
                 </nav>
@@ -520,15 +564,15 @@ function App() {
                 </section>
 
                 {/* Projects Section */}
-                <section id="projects" className="py-24">
+                <section id="projects" className="py-16 sm:py-24">
                   <div className="max-w-screen-md mx-auto px-4">
-                    <h2 className="text-3xl font-medium mb-8 text-[#1A202C] dark:text-white">{t.projects.title}</h2>
-                    <div className="space-y-8">
-                      <div className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-green-50 via-teal-50 to-blue-50 dark:from-gray-800 dark:via-gray-700 dark:to-gray-800 p-8 shadow-lg transition-all duration-300 hover:shadow-xl">
+                    <h2 className="text-2xl sm:text-3xl font-medium mb-6 sm:mb-8 text-[#1A202C] dark:text-white">{t.projects.title}</h2>
+                    <div className="space-y-6 sm:space-y-8">
+                      <div className="group relative overflow-hidden rounded-xl sm:rounded-2xl bg-gradient-to-br from-green-50 via-teal-50 to-blue-50 dark:from-gray-800 dark:via-gray-700 dark:to-gray-800 p-6 sm:p-8 shadow-lg transition-all duration-300 hover:shadow-xl">
                         <div className="absolute inset-0 bg-gradient-to-br from-green-100/20 via-teal-100/20 to-blue-100/20 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
                         <div className="relative z-10">
                           <Link to="/tag-em-all" className="block">
-                            <h3 className="text-xl font-light text-[#1A202C] dark:text-white mb-2 hover:text-teal-600 dark:hover:text-teal-300 transition-colors duration-300">
+                            <h3 className="text-lg sm:text-xl font-light text-[#1A202C] dark:text-white mb-2 hover:text-teal-600 dark:hover:text-teal-300 transition-colors duration-300">
                               {t.projects.tagEmAll}
                             </h3>
                           </Link>
@@ -540,16 +584,16 @@ function App() {
                             whileHover={{ x: 5 }}
                             transition={{ type: "spring", stiffness: 300 }}
                           >
-                            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 sm:h-6 sm:w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                             </svg>
                           </motion.div>
                         </div>
                       </div>
-                      <div className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-purple-50 via-pink-50 to-blue-50 dark:from-gray-800 dark:via-gray-700 dark:to-gray-800 p-8 shadow-lg transition-all duration-300 hover:shadow-xl">
+                      <div className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-purple-50 via-pink-50 to-blue-50 dark:from-gray-800 dark:via-gray-700 dark:to-gray-800 p-6 sm:p-8 shadow-lg transition-all duration-300 hover:shadow-xl">
                         <div className="absolute inset-0 bg-gradient-to-br from-purple-100/20 via-pink-100/20 to-blue-100/20 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
                         <div className="relative z-10">
-                          <h3 className="text-xl font-light text-[#1A202C] dark:text-white mb-2">{t.projects.igniteHerMind}</h3>
+                          <h3 className="text-lg sm:text-xl font-light text-[#1A202C] dark:text-white mb-2">{t.projects.igniteHerMind}</h3>
                           <p className="text-sm text-gray-600 dark:text-gray-300 max-w-xl mb-4">
                             {t.projects.igniteHerMindDesc}
                           </p>
@@ -562,17 +606,17 @@ function App() {
                               whileHover={{ x: 5 }}
                               transition={{ type: "spring", stiffness: 300 }}
                             >
-                              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 sm:h-6 sm:w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                               </svg>
                             </motion.div>
                           </div>
                         </div>
                       </div>
-                      <div className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-blue-50 via-green-50 to-teal-50 dark:from-gray-800 dark:via-gray-700 dark:to-gray-800 p-8 shadow-lg transition-all duration-300 hover:shadow-xl">
+                      <div className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-blue-50 via-green-50 to-teal-50 dark:from-gray-800 dark:via-gray-700 dark:to-gray-800 p-6 sm:p-8 shadow-lg transition-all duration-300 hover:shadow-xl">
                         <div className="absolute inset-0 bg-gradient-to-br from-blue-100/20 via-green-100/20 to-teal-100/20 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
                         <div className="relative z-10">
-                          <h3 className="text-xl font-light text-[#1A202C] dark:text-white mb-2">{t.projects.uxTriathlon}</h3>
+                          <h3 className="text-lg sm:text-xl font-light text-[#1A202C] dark:text-white mb-2">{t.projects.uxTriathlon}</h3>
                           <p className="text-sm text-gray-600 dark:text-gray-300 max-w-xl mb-4">
                             {t.projects.uxTriathlonDesc}
                           </p>
@@ -585,7 +629,7 @@ function App() {
                               whileHover={{ x: 5 }}
                               transition={{ type: "spring", stiffness: 300 }}
                             >
-                              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 sm:h-6 sm:w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                               </svg>
                             </motion.div>
@@ -677,18 +721,18 @@ function App() {
                         
                         <div>
                           <h4 className="text-xl font-medium text-[#1A202C] dark:text-white mb-4">{t.resume.skills.title}</h4>
-                          <div className="flex flex-wrap gap-3">
+                          <div className="flex flex-wrap gap-2 sm:gap-3">
                             {Object.entries(t.resume.skills).filter(([key]) => key !== 'title').map(([skill, { name, description }]) => (
-                              <div key={skill} className="group">
-                                <span className={`px-4 py-2 ${
+                              <div key={skill} className="group relative">
+                                <span className={`px-3 sm:px-4 py-2 ${
                                   skill === 'figma' ? 'bg-violet-100 dark:bg-violet-900/50 text-violet-800 dark:text-violet-200' :
                                   skill === 'htmlCss' ? 'bg-emerald-100 dark:bg-emerald-900/50 text-emerald-800 dark:text-emerald-200' :
                                   skill === 'javascript' ? 'bg-amber-100 dark:bg-amber-900/50 text-amber-800 dark:text-amber-200' :
                                   skill === 'react' ? 'bg-blue-100 dark:bg-blue-900/50 text-blue-800 dark:text-blue-200' :
                                   'bg-cyan-100 dark:bg-cyan-900/50 text-cyan-800 dark:text-cyan-200'
-                                } rounded-full text-sm inline-flex items-center hover:bg-opacity-75 transition-colors duration-300`}>
-                                  <span className="font-medium">{name}</span>
-                                  <span className={`ml-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ${
+                                } rounded-full text-sm inline-flex items-center hover:bg-opacity-80 dark:hover:bg-opacity-70 transition-all duration-300`}>
+                                  <span className="font-medium whitespace-nowrap">{name}</span>
+                                  <span className={`absolute left-0 -bottom-12 w-48 text-xs opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white dark:bg-gray-800 p-2 rounded-md shadow-lg z-10 ${
                                     skill === 'figma' ? 'text-violet-600 dark:text-violet-300' :
                                     skill === 'htmlCss' ? 'text-emerald-600 dark:text-emerald-300' :
                                     skill === 'javascript' ? 'text-amber-600 dark:text-amber-300' :
