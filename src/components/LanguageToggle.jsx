@@ -1,33 +1,41 @@
 import { motion } from 'framer-motion';
 
 const LanguageToggle = ({ language, onLanguageChange }) => {
+  const handleClick = (e, newLang) => {
+    e.preventDefault();
+    e.stopPropagation();
+    onLanguageChange(newLang);
+  };
+
   return (
-    <div className="inline-flex items-center bg-gray-100 dark:bg-gray-800 rounded-full p-1">
-      <motion.button
-        onClick={() => onLanguageChange('en')}
-        className={`px-4 py-1.5 rounded-full text-sm font-medium transition-all duration-200 ${
+    <motion.div 
+      className="inline-flex bg-white/90 dark:bg-gray-800/90 rounded-full p-1 shadow-lg backdrop-blur-sm"
+      whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: 0.95 }}
+    >
+      <button
+        className={`px-3 py-1 rounded-full text-sm font-medium transition-colors duration-300 ${
           language === 'en'
-            ? 'bg-white dark:bg-gray-700 text-gray-900 dark:text-white shadow-sm'
-            : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
+            ? 'bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200'
+            : 'text-gray-600 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-300'
         }`}
-        whileHover={{ scale: 1.02 }}
-        whileTap={{ scale: 0.98 }}
+        onClick={(e) => handleClick(e, 'en')}
+        aria-label="Switch to English"
       >
         EN
-      </motion.button>
-      <motion.button
-        onClick={() => onLanguageChange('fr')}
-        className={`px-4 py-1.5 rounded-full text-sm font-medium transition-all duration-200 ${
+      </button>
+      <button
+        className={`px-3 py-1 rounded-full text-sm font-medium transition-colors duration-300 ${
           language === 'fr'
-            ? 'bg-white dark:bg-gray-700 text-gray-900 dark:text-white shadow-sm'
-            : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
+            ? 'bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200'
+            : 'text-gray-600 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-300'
         }`}
-        whileHover={{ scale: 1.02 }}
-        whileTap={{ scale: 0.98 }}
+        onClick={(e) => handleClick(e, 'fr')}
+        aria-label="Switch to French"
       >
         FR
-      </motion.button>
-    </div>
+      </button>
+    </motion.div>
   );
 };
 

@@ -456,12 +456,19 @@ function App() {
                 </nav>
 
                 {/* Hero Section */}
-                <section className="min-h-screen flex items-center justify-center px-4">
+                <section className="min-h-screen flex items-center justify-center px-4 relative">
                   <div className="max-w-4xl mx-auto text-center">
-                    <div className="mb-8 flex justify-center">
+                    <div className="absolute top-4 right-20 z-50">
                       <LanguageToggle 
                         language={language} 
-                        onLanguageChange={setLanguage}
+                        onLanguageChange={(newLang) => {
+                          setLanguage(newLang);
+                          // Prevent scroll
+                          if (window.innerWidth < 768) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                          }
+                        }}
                       />
                     </div>
                     
@@ -472,7 +479,7 @@ function App() {
                         duration: 0.8,
                         ease: [0.6, -0.05, 0.01, 0.99]
                       }}
-                      className="text-4xl md:text-6xl font-light mb-6 text-text-primary dark:text-gray-100 font-petrona"
+                      className="text-4xl md:text-6xl font-light mb-6 text-text-primary dark:text-gray-100 font-petrona pt-20 md:pt-0"
                     >
                       {t.name}
                     </motion.h1>
