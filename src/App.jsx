@@ -7,6 +7,7 @@ import Introduction from './components/Introduction'
 import Navigation from './components/Navigation'
 import Footer from './components/Footer'
 import Projects from "./components/Projects";
+import About from "./components/About";
 
 function App() {
   const [language, setLanguage] = useState(() => {
@@ -282,6 +283,7 @@ function App() {
               <main>
                 <Introduction language={language} />
                 <Projects language={language} />
+                <About language={language} />
               </main>
               <Footer language={language} />
             </>
