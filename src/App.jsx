@@ -3,9 +3,10 @@ import TagEmAllPage from './pages/TagEmAllPage'
 import { useState, useEffect } from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import ScrollIndicator from './components/ScrollIndicator'
-import Introduction from './components/Introduction.jsx'
+import Introduction from './components/Introduction'
 import Navigation from './components/Navigation'
 import Footer from './components/Footer'
+import Projects from "./components/Projects";
 
 function App() {
   const [language, setLanguage] = useState(() => {
@@ -273,13 +274,14 @@ function App() {
     <Router>
       <div className="min-h-screen">
         <ScrollIndicator />
-        
+
         <Routes>
           <Route path="/" element={
             <>
               <Navigation language={language} setLanguage={setLanguage} theme={theme} setTheme={setTheme} />
               <main>
                 <Introduction language={language} />
+                <Projects language={language} />
               </main>
               <Footer language={language} />
             </>
