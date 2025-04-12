@@ -8,6 +8,7 @@ import Navigation from './components/Navigation'
 import Footer from './components/Footer'
 import Projects from "./components/Projects";
 import About from "./components/About";
+import Contact from "./components/Contact";
 
 function App() {
   const [language, setLanguage] = useState(() => {
@@ -269,8 +270,6 @@ function App() {
     }
   }
 
-  const t = translations[language]
-
   return (
     <Router>
       <div className="min-h-screen">
@@ -284,6 +283,7 @@ function App() {
                 <Introduction language={language} />
                 <Projects language={language} />
                 <About language={language} />
+                <Contact language={language} />
               </main>
               <Footer language={language} />
             </>
