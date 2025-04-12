@@ -1,10 +1,9 @@
 import { motion } from 'framer-motion';
 
-const LanguageToggle = ({ language, onLanguageChange }) => {
-  const handleClick = (e, newLang) => {
-    e.preventDefault();
-    e.stopPropagation();
+const LanguageToggle = ({ language, setLanguage: onLanguageChange }) => {
+  const handleClick = (newLang) => {
     onLanguageChange(newLang);
+    localStorage.setItem('language', newLang);
   };
 
   return (
@@ -16,10 +15,10 @@ const LanguageToggle = ({ language, onLanguageChange }) => {
       <button
         className={`px-3 py-1 rounded-full text-sm font-medium transition-colors duration-300 ${
           language === 'en'
-            ? 'bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200'
-            : 'text-gray-600 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-300'
+            ? 'bg-terracotta text-white'
+            : 'text-text-secondary dark:text-gray-300 hover:text-terracotta dark:hover:text-terracotta'
         }`}
-        onClick={(e) => handleClick(e, 'en')}
+        onClick={() => handleClick('en')}
         aria-label="Switch to English"
       >
         EN
@@ -27,10 +26,10 @@ const LanguageToggle = ({ language, onLanguageChange }) => {
       <button
         className={`px-3 py-1 rounded-full text-sm font-medium transition-colors duration-300 ${
           language === 'fr'
-            ? 'bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200'
-            : 'text-gray-600 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-300'
+            ? 'bg-terracotta text-white'
+            : 'text-text-secondary dark:text-gray-300 hover:text-terracotta dark:hover:text-terracotta'
         }`}
-        onClick={(e) => handleClick(e, 'fr')}
+        onClick={() => handleClick('fr')}
         aria-label="Switch to French"
       >
         FR
@@ -39,4 +38,4 @@ const LanguageToggle = ({ language, onLanguageChange }) => {
   );
 };
 
-export default LanguageToggle; 
+export default LanguageToggle;

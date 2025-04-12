@@ -1,5 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Petrona:wght@300;400;500&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Petrona:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -7,37 +7,53 @@
 
 @layer base {
   html {
-    @apply scroll-smooth bg-white;
+    @apply scroll-smooth bg-warm-cream;
+  }
+  
+  html.dark {
+    @apply bg-gray-900 text-white;
   }
   
   body {
-    @apply text-[#1A202C] antialiased;
+    @apply text-text-primary antialiased font-work-sans;
+  }
+  
+  body.dark {
+    @apply text-gray-100;
   }
 }
 
 @layer components {
   .container {
-    @apply max-w-screen-md mx-auto px-4;
+    @apply max-w-screen-lg mx-auto px-4 md:px-6;
   }
   
   .section {
-    @apply py-24;
+    @apply py-16 md:py-24;
   }
   
   .nav-link {
-    @apply text-[#4A5568] hover:text-[#1A202C] transition-colors duration-200;
+    @apply text-text-secondary hover:text-terracotta transition-colors duration-300 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-terracotta after:transition-all hover:after:w-full dark:text-gray-300 dark:hover:text-terracotta;
   }
   
   .heading-1 {
-    @apply text-5xl font-medium;
+    @apply text-4xl md:text-5xl font-medium font-petrona dark:text-white;
   }
   
   .heading-2 {
-    @apply text-3xl font-medium;
+    @apply text-2xl md:text-3xl font-medium font-petrona dark:text-white;
+  }
+  
+  .heading-3 {
+    @apply text-xl md:text-2xl font-medium font-petrona dark:text-white;
   }
   
   .body-text {
-    @apply text-lg font-light;
+    @apply text-base md:text-lg font-light leading-relaxed dark:text-gray-300;
+  }
+
+  .accent-text {
+    @apply text-terracotta;
   }
 
   .font-petrona {
@@ -46,6 +62,30 @@
 
   .font-work-sans {
     font-family: 'Work Sans', sans-serif;
+  }
+  
+  .btn {
+    @apply px-6 py-3 rounded-lg font-medium transition-all duration-300 inline-block;
+  }
+  
+  .btn-primary {
+    @apply bg-terracotta text-white hover:bg-opacity-90 shadow-warm dark:bg-terracotta dark:text-white dark:hover:bg-opacity-80;
+  }
+  
+  .btn-secondary {
+    @apply bg-transparent border border-terracotta text-terracotta hover:bg-terracotta hover:text-white dark:border-terracotta dark:text-terracotta dark:hover:bg-terracotta dark:hover:text-white;
+  }
+  
+  .card {
+    @apply bg-white rounded-xl shadow-soft p-6 transition-all duration-300 hover:shadow-warm dark:bg-gray-800 dark:shadow-none dark:hover:shadow-none dark:border dark:border-gray-700;
+  }
+  
+  .project-card {
+    @apply card hover:translate-y-[-5px];
+  }
+  
+  .input-field {
+    @apply w-full px-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-terracotta focus:border-transparent transition-all duration-300 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-terracotta;
   }
 }
 
@@ -64,4 +104,16 @@
 .animate-gradient-x {
   animation: gradient-x 15s ease infinite;
   background-size: 200% 200%;
+}
+
+.gradient-text {
+  @apply text-transparent bg-clip-text bg-gradient-to-r from-terracotta to-accent dark:from-terracotta dark:to-accent;
+}
+
+.subtle-pattern {
+  background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23e07a5f' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+}
+
+.dark .subtle-pattern {
+  background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23e07a5f' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
 }
