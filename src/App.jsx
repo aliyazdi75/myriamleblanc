@@ -3,6 +3,7 @@ import TagEmAllPage from './pages/TagEmAllPage'
 import { useState, useEffect } from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import ScrollIndicator from './components/ScrollIndicator'
+import Introduction from './components/Introduction.jsx'
 import Navigation from './components/Navigation'
 import Footer from './components/Footer'
 
@@ -277,6 +278,9 @@ function App() {
           <Route path="/" element={
             <>
               <Navigation language={language} setLanguage={setLanguage} theme={theme} setTheme={setTheme} />
+              <main>
+                <Introduction language={language} />
+              </main>
               <Footer language={language} />
             </>
           } />
